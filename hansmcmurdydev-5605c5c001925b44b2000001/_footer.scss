@@ -1,0 +1,210 @@
+/* ==========================================================================
+To top
+========================================================================== */
+  .to-top {
+    margin: 2em 0em 0em 0em;
+    height: 60px;
+    background-color: #495061;
+    .to-top-wrap {
+      height: 60px;
+      width: 70px;
+      position: absolute;
+      right: 0;
+      text-align: center; 
+    }
+    .to-top-wrap a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.15); 
+    }
+    .to-top-wrap a:hover, 
+    .to-top-wrap a:focus {
+      background-color: rgba(0, 0, 0, 0.4); 
+    }
+    .to-top-wrap i {
+      font-size: 30px;
+      line-height: 55px; 
+    }
+    .row {
+      position: relative; 
+    }
+  }
+
+/* ==========================================================================
+Footer
+========================================================================== */
+  footer {
+  background-color: $theme-color-1;
+  position: relative;
+    .sign-in{
+      font-size: 2rem;
+      color: white !important;
+    }
+    p {
+    color: #ACB1B4;
+    font-size: 13px; 
+    }
+    a {
+      color: #fff; 
+      &:hover {
+        color: #FF5274; 
+      }
+    }
+    ul.footer-group {
+      color: white;
+
+      border-top: solid 1px #4E566C;
+      padding-top: 25px;
+      margin-bottom: 45px;
+      @media screen and (max-width:640px) {
+        border-top: none;
+      }
+
+      .email-login a{
+        color: #fff;
+      }
+      li {
+        font-size: 2rem;
+        display: inline-block;
+        margin-right: 30px; 
+      
+        @media screen and (max-width:640px) {
+          display: block;
+        }
+
+        a i {    margin-top: 20px;}
+        a.twitter-share {
+          color: white;
+          height: 60px;
+          width: 60px;
+          background-color: #1AB4EF;
+          border-radius: 3px;
+          font-size: 22px;
+          display: inline-block;
+          text-align: center;
+          margin-right: 20px; 
+        }
+        a.facebook-share {
+          color: white;
+          height: 60px;
+          width: 60px;
+          background-color: #3B5898;
+          border-radius: 3px;
+          font-size: 22px;
+          display: inline-block;
+          text-align: center; 
+        }
+      }
+      li a {
+        color: $footer-link-color;
+        font-size: 13px;
+        text-transform: uppercase;
+        @media screen and (max-width:640px) {
+          font-size: 13px;
+          text-transform: uppercase;
+          padding: 20px 0;
+          display: block;
+          border-bottom: dashed 1px #4E566C;       
+        }
+      }
+      li a:hover {
+        color: #FF5274; 
+      }
+      li:last-child {
+        margin-right: 0; 
+      }
+    }
+    span.fa-heart {
+      color: #ff415c;
+      font-size: 15px;
+      margin: 0 2px; 
+    }
+    .social-share {
+      position: absolute;
+      background-color: $theme-color-1;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      padding: 142px 0 0 70px; 
+      // @media screen and (max-width:640px) {
+      //     height: 49%;
+      //     padding: 0px 0 0 117px;
+      // }
+
+      @media screen and (max-width:991px) {
+        width: 100%;
+      }
+      p {
+        color: #fff;
+        text-transform: uppercase;
+        padding-bottom: 10px; 
+      }
+      a.twitter-share {
+        height: 60px;
+        width: 60px;
+        background-color: #1AB4EF;
+        border-radius: 3px;
+        font-size: 22px;
+        display: inline-block;
+        text-align: center;
+        margin-right: 20px; 
+      }
+    }
+    .social-share a.twitter-share:hover, 
+    .social-share a.twitter-share:focus {
+      background-color: #1590BF;
+    }
+    .social-share a.facebook-share:hover, 
+    .social-share a.facebook-share:focus {
+      background-color: #324C85; 
+    }
+    .social-share a.facebook-share {
+      height: 60px;
+      width: 60px;
+      background-color: #3B5898;
+      border-radius: 3px;
+      font-size: 22px;
+      display: inline-block;
+      text-align: center; 
+    }
+    .social-share a {
+      color: #fff; 
+    }
+    .social-share a:hover {
+      color: #fff; 
+    }
+    .social-share a i {
+      margin-top: 20px; 
+    }
+    .footer-links {
+      margin: 120px 0 120px 0;
+      @media screen and (max-width:991px) {
+        margin: 120px 0 120px 0;
+      }
+    }
+  }
+  @media screen and (max-width:640px) {
+    footer ul.footer-group {
+      border-top: none;
+    }
+
+    footer ul.footer-group li a {
+      font-size: 13px;
+      text-transform: uppercase;
+      padding: 20px 0;
+      display: block;
+      border-bottom: dashed 1px #4E566C;
+    }
+
+    footer ul.footer-group li {
+      display: block;
+    }
+
+    footer .footer-links {
+      margin: 50px 0 50px 0;
+    }
+
+  }
+// End Footer

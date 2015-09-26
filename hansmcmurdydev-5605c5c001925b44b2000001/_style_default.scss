@@ -1,0 +1,90 @@
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #9ac760; // accent / logo background color
+$theme-color-2: #fff; // body background
+$theme-color-3: #1f1f1f; // off-canvas control color
+$theme-color-4: #2a292b; // off-canvas border color
+
+// form input area focus color
+$theme-color-5: rgba(226, 92, 51, 0.6);
+
+// header and footer
+$header-background-color: #2e2d2f;
+$header-background-color-2: $theme-color-1; // logo background
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #1f1f1f;
+$features-text-color: #2f2f2f;
+$features-background-color: #fff;
+$footer-background-color: $header-background-color;
+$footer-color: $header-color;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: darken($header-background-color,4);
+
+// dropdowns
+$dropdown-background-color: #202020;
+$dropdown-background-hover-color: #575757;
+$dropdown-background-active-color: #2e2d2f;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: $theme-color-1;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav
+$subnav-background: #202020;
+$subnav-hover-background: #575757;
+$subnav-active-background: #2e2d2f;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: $theme-color-1;
+
+// text
+$text-color: #2f2f2f;
+$link-color: #9ac760;
+$link-hover-color: #787878;
+$link-active-color: #000000;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #575757;
+$button-active-color: $theme-color-1;
+$button-active-background: #2e2e30;
+$button-border: .4em solid darken($button-background,15);
+$button-padding: 1.6em;
+$button-radius: 0;
+
+// site nav controls
+$control-color: #fff;
+$control-background: $theme-color-1;
+$control-hover-color: #fff;
+$control-hover-background: #575757;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 0;
+
+// forms
+$form-color: $text-color;
+$form-background: #f0f0f0;
+
+// shades
+$shade-1: #787878; // mid gray
+$shade-2: #575757; // dark gray
+$shade-3: #f4faec; // light accent
+$shade-3-text-color: #2e2d2f;
+$shade-3-link-color: #93be5b;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #df9c3c; // alternative accent

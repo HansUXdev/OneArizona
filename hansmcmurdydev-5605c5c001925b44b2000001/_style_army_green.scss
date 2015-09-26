@@ -1,0 +1,90 @@
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #e89a12; // accent / logo background color
+$theme-color-2: #e4e1d7; // body background
+$theme-color-3: #2e2d2f; // off-canvas control color
+$theme-color-4: lighten($theme-color-3,5); // off-canvas border color
+
+// form input area focus color
+$theme-color-5: rgba(232, 154, 18, 0.6);
+
+// header and footer
+$header-background-color: #1d1b10;
+$header-background-color-2: #585d56; // logo background
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #2e2d2f;
+$features-text-color: #fff;
+$features-background-color: rgba(29, 27, 16, .89);
+$footer-background-color: $header-background-color;
+$footer-color: $header-color;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: #585d56;
+
+// dropdowns
+$dropdown-background-color: #585d56;
+$dropdown-background-hover-color: #1d1b10;
+$dropdown-background-active-color: #2e2d2f;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: $theme-color-1;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav colors
+$subnav-background: #ffa200;
+$subnav-hover-background: #fff;
+$subnav-active-background: #ffa200;
+$subnav-color: #fff;
+$subnav-hover-color: #263248;
+$subnav-active-color: #2f2f2f;
+
+// text
+$text-color: #2e2d2f;
+$link-color: #c07a00;
+$link-hover-color: #2e2d2f;
+$link-active-color: #676767;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #1d1b10;
+$button-active-color: $theme-color-1;
+$button-active-background: #2e2d2f;
+$button-border: 0;
+$button-padding: 2em;
+$button-radius: 999px;
+
+// site nav controls
+$control-color: #fff;
+$control-background: #ffa200;
+$control-hover-color: #fff;
+$control-hover-background: #ffa200;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 5px;
+
+// forms
+$form-color: $text-color;
+$form-background: #d2cec2;
+
+// shades
+$shade-1: #bdb7a3; // mid gray
+$shade-2: #1d1b10; // dark gray
+$shade-3: #585d56; // light accent
+$shade-3-text-color: #fff;
+$shade-3-link-color: #e89a12;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: $theme-color-1; // alternative accent

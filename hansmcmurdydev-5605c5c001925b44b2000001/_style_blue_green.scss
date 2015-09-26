@@ -1,0 +1,90 @@
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #c51230; // accent / logo background color
+$theme-color-2: #446a77; // body background
+$theme-color-3: #162f37; // off-canvas control color
+$theme-color-4: lighten($theme-color-3,5); // off-canvas border color
+
+// form input area focus color
+$theme-color-5: rgba(197, 18, 48, 0.6);
+
+// header and footer
+$header-background-color: #35545e;
+$header-background-color-2: #c51230;
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #162f37;
+$features-text-color: #fff;
+$features-background-color: rgba(29, 27, 16, .89);
+$footer-background-color: #162e36;
+$footer-color: #fff;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: #283d44;
+
+// dropdowns
+$dropdown-background-color: #263248;
+$dropdown-background-hover-color: #7e8aa2;
+$dropdown-background-active-color: #fff;
+$dropdown-color: #fff;
+$dropdown-hover-color: #212121;
+$dropdown-active-color: #212121;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav colors
+$subnav-background: #162f37;
+$subnav-hover-background: #1d404b;
+$subnav-active-background: #162f37;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: #fff;
+
+// text
+$text-color: #fff;
+$link-color: #8fcee3;
+$link-hover-color: #d8d8d8;
+$link-active-color: #ffffff;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #a51029;
+$button-active-color: #fff;
+$button-active-background: #8b0e23;
+$button-border: 0;
+$button-padding: 2em;
+$button-radius: 0;
+
+// site nav controls
+$control-color: #fff;
+$control-background: #162f37;
+$control-hover-color: #fff;
+$control-hover-background: #162f37;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 5px;
+
+// forms
+$form-color: $text-color;
+$form-background: #35545e;
+
+// shades
+$shade-1: #162f37; // mid gray
+$shade-2: #c51230; // dark gray
+$shade-3: #162f37; // light accent
+$shade-3-text-color: #fff;
+$shade-3-link-color: #8fcee3;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #ffa200; // alternative accent
