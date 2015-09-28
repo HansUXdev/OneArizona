@@ -107,8 +107,12 @@
         </style>
           <!-- Include Intro with mission statement -->
           <!-- Include the issue partial -->
-          {% include "1-intro" %}
-          {% include "1az-organizations" %}
+          
+          {% comment %}
+          {% endcomment %}
+            {% include "1-intro" %}
+            {% include "1az-organizations" %}
+
         {% endif %}
 
         {% case page.slug %}
@@ -257,41 +261,52 @@
         <hr/>
         {% endif %}
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-7 login-group">
                     <div class="footer-links">
                         <ul class="footer-group">
                             {% if request.logged_in? %}
-                            <li>
-                                <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>
-                                View your
+                              <p class="text-center login-text">
+                                You loged in as 
+                              </p>
+                              <li>
+                                  <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>
+                                  <!-- View your -->
 
-                            </li>
-                            <li>{% if site.show_public_profiles? %}
-                                <a href="{{ request.current_signup.profile_url }}">public profile</a>
-                                {% endif %}
-                            </li>
-                            <li>
-                                <a href="{{ request.current_signup.settings_url }}">account settings</a>
-                                ,or
-                            </li>
-                            <li>
-                                <a href="{{ request.current_signup.logout_url }}">sign out</a>
-                            </li>
+                              </li>
+                              <li>{% if site.show_public_profiles? %}
+                                  <a href="{{ request.current_signup.profile_url }}">public profile</a>
+                                  {% endif %}
+                              </li>
+                              <li>
+                                  <a href="{{ request.current_signup.settings_url }}">account settings</a>
+                                  <!-- or -->
+                              </li>
+                              <li>
+                                  <a href="{{ request.current_signup.logout_url }}">sign out</a>
+                              </li>
                             {% else %}
-                            <li>
+                              <p class="text-center login-text">
+                                <!-- login with -->
                                 Sign in with 
-                                <a href="{{ request.facebook_connect_url }}" class="facebook-share">
-                                    <!-- Facebook -->
-                                    <i class="fa fa-facebook"></i>
+                              </p>       
+                              <li>
+                                  <a href="{{ request.facebook_connect_url }}" class="facebook-share">
+                                      <!-- Facebook -->
+                                      <i class="fa fa-facebook"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="{{ request.twitter_connect_url }}" class="twitter-share">
+                                      <!-- Twitter -->
+                                      <i class="fa fa-twitter"></i>
+                                  </a>
+                              </li>
+                              <li>or 
+                                <a href="/login" class="email-share">
+                                  <!-- email -->
+                                  <i class="fa fa-envelope"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="{{ request.twitter_connect_url }}" class="twitter-share">
-                                    <!-- Twitter -->
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>or <a href="/login">email</a></li>
+                              </li>
                             {% endif %}
                         </ul>
                         <p>
@@ -306,7 +321,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="social-share">
+                <div class="col-md-3 social-share">
                     <p>Share One Arizona with your friends</p>
                     <a href="https://twitter.com/hansonconsult" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
                 </div>
@@ -324,10 +339,25 @@
 
 
 <!--  -->
-<script>
-  
 
-  
+    {% if page.is_homepage? == true %}
+        <script src="typewriter.js"></script>
+    {% endif %}
+
+
+
+<script>
+$(document).ready(function() {
+  {% if page.is_homepage? == true %}
+      /***************** Typewriter ******************/
+          $(".features-headline").typewriter({
+              speed: 60
+          });
+
+      /***************** owl Pricing ******************/
+  {% endif %}
+});  
+
 </script>
 
 <!--  -->

@@ -1,0 +1,176 @@
+<!-- supporter nav -->
+<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top" align="left">
+			<div class="supporter_pic_left">{{ request.current_signup.bigger_profile_image }}</div>
+    </td>
+    <td valign="top" align="left">
+<div class="supporter_pic_right">
+<div id="name"><a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a></div>
+<div id="myprofile">
+	{% if site.show_public_profiles? == false %}
+  {% elsif request.current_signup.is_profile_published? %}
+    <a href="{{ request.current_signup.profile_url }}">Public profile</a>
+  {% else %}
+    No public profile
+  {% endif %}
+  (<a href="{{ request.current_signup.logout_url }}">Sign out</a>)
+</div>
+<div class="padtopless">
+  {% if request.current_signup.has_membership_level_badge %}
+    {% if site.has_membership_page? %}
+      <span class="badge"><a href="{{ site.membership_page.url }}">{{ request.current_signup.membership_level_badge }}</a></span>
+    {% else %}
+      <span class="badge">{{ request.current_signup.membership_level_badge }}</span>
+    {% endif %}
+  {% endif %}
+  <span class="pc">{{ request.current_signup.capital_amount_format }}</span>
+  {% if request.current_signup.is_banned? %}
+    <span class="">Banned</span>
+  {% elsif request.current_signup.rule_violations_count == 1 %}
+    <span class=""> {{ "fugue-flag-yellow" | icon }} Warning</span>
+  {% elsif request.current_signup.rule_violations_count == 2 %}
+    <span class=""> {{ "fugue-flag" | icon }} 1 violation</span>
+  {% elsif request.current_signup.rule_violations_count == 3 %}
+    <span class=""> {{ "fugue-flag-gray" | icon }} 2 violations</span>
+  {% endif %}
+</div>
+</div>
+    </td>
+  </tr>
+</table>
+
+<hr />
+
+{% if request.current_user.is_intern? %}
+	<div class="supporter_nav_container">
+	<ul class="supporter_nav">
+	{% if request.current_user.can_publish? %}
+	  {% if page_type == 'Blog' %}
+	    <li><a href="{{ page.admin_new_subpage_url }}">{{ "fugue-blog--plus" | icon }} New blog post</a></li>
+			<li><a href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></li>
+	  {% elsif page_type == 'Suggestion Box' %}
+	  	<li><a href="{{ page.admin_new_subpage_url }}">{{ "fugue-balloon--plus" | icon }} New suggestion</a></li>
+			<li><a href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></li>
+	  {% elsif page_type == 'Calendar' %}
+	  	<li><a href="{{ page.admin_new_subpage_url }}">{{ "fugue-calendar--plus" | icon }} New event</a></li>
+			<li><a href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></li>
+	  {% elsif page_type == 'Blog Post' %}
+	    <li><a href="{{ page.blog_post.admin_edit_url }}">{{ "fugue-blog--pencil" | icon }} Edit this blog post</a></li>
+	  {% elsif page_type == 'Question' %}
+	   	<li><a href="{{ page.question.admin_edit_url }}">{{ "fugue-question-white" | icon }} Edit this question</a></li>
+	  {% elsif page_type == 'FAQ' %}
+	   	<li><a href="{{ page.faq.admin_edit_url }}">{{ "fugue-question-octagon-frame" | icon }} Edit questions</a></li>
+	  {% elsif page_type == 'Suggestion' %}
+	    <li><a href="{{ page.suggestion.admin_edit_url }}">{{ "fugue-balloon--pencil" | icon }} Edit this suggestion</a></li>
+	  {% elsif page_type == 'Event' %}
+	    <li><a href="{{ page.event.admin_edit_url }}">{{ "fugue-calendar--pencil" | icon }} Edit this event</a></li>
+	  {% elsif page_type == 'Profile' %}
+	    <li><a href="{{ profile.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this person</a></li>
+	  {% elsif page %}
+	    <li><a href="{{ page.admin_edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></li>
+	  {% endif %}
+	{% endif %}
+  <li><a href="{{ site.admin_dashboard_url }}">{{ "fugue-system-monitor" | icon }} NationBuilder control panel</a></li>
+	</ul>
+	</div>
+	<hr>
+{% endif %}
+
+<div class="supporter_nav_container">
+<ul class="supporter_nav">
+
+  {% for child in site.supporter_pages %}
+		{% if page == child %}
+			<li class="on"><a href="{{ child.url }}">{{ child.icon | icon }} {{ child.name }}</a></li>
+		{% else %}
+			<li><a href="{{ child.url }}">{{ child.icon | icon }} {{ child.name }}</a></li>
+		{% endif %}
+  {% endfor %}
+
+	{% if page_type == 'User Page' %}
+  	<li class="on"><a href="{{ site.edit_pages_url }}">{{ "fugue-document-share" | icon }} Your pages</a></li>
+	{% else %}
+		<li><a href="{{ site.edit_pages_url }}">{{ "fugue-document-share" | icon }} Your pages</a></li>
+	{% endif %}
+	{% if page_type == 'User Settings' %}
+  	<li class="on"><a href="{{ request.current_signup.settings_url }}">{{ "fugue-gear" | icon }} Settings</a></li>
+	{% else %}
+		<li><a href="{{ request.current_signup.settings_url }}">{{ "fugue-gear" | icon }} Settings</a></li>
+	{% endif %}
+
+	{% if page and page.is_editing_available? and page.is_user_submitted? %}
+	  <li><a href="{{ page.edit_url }}">{{ "fugue-edit-signiture" | icon }} Edit this page</a></li>
+	{% endif %}
+
+</ul>
+</div>
+
+{% if site.has_button1? %}
+  <hr />
+	<div class="submit_link_huge"><a href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a></div>
+{% endif %}
+
+{% if site.has_button2? %}
+<div class="padtopless">
+  <div class="submit_link_huge"><a href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a></div>
+</div>
+{% endif %}
+
+{% if site.has_button3? %}
+<div class="padtopless">
+  <div class="submit_link_huge"><a href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a></div>
+</div>
+{% endif %}
+
+{% if request.current_signup.has_parent? %}
+
+<hr />
+
+ <div class="supporter_right_title">{{ "fugue-user-business-boss" | icon }} Your point person</div>
+
+ <div class="padtop">
+		<div class="supporter_right_point">{{ request.current_signup.parent.profile_image }}</div>
+    <div style="float: left;">
+	    <div class="padbottomless">{{ request.current_signup.parent.published_name_linked }}</div>
+	    {% if request.current_signup.parent.has_twitter_info? %}
+	    <a href="{{ request.current_signup.parent.twitter_profile_url }}"><img src="{{ 'twitter_16' | icon_url }}" width="16" height="16" border="0" /></a>
+	    {% endif %}
+	    {% if request.current_signup.parent.has_facebook_info? %}
+	    <a href="{{ request.current_signup.parent.facebook_profile_url }}"><img src="{{ 'facebook_16' | icon_url }}" width="16" height="16" border="0" /></a>
+	    {% endif %}
+	    {% if request.current_signup.parent.has_email? %}
+	    <a href="mailto:{{ request.current_signup.parent.email }}"><img src="{{ 'email_16' | icon_url }}" width="16" height="16" border="0"/></a>
+	    {% endif %}
+    </div>
+	</div>
+
+	<div style="clear: both;"></div>
+
+{% endif %}
+
+{% if site.has_facebook_page? %}
+<div class="fb-page" data-href="{{ site.broadcaster.facebook_page_profile_url }}" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="{{ site.broadcaster.facebook_page_profile_url }}"><a href="{{ site.broadcaster.facebook_page_profile_url }}">{{ site.broadcaster.facebook_page_username }}</a></blockquote></div></div>
+
+{% else %}
+	<hr/ >
+	<fb:like href="{{ site.full_url }}" colorscheme="{{ site.facebook_colorscheme }}" width="240"></fb:like>
+{% endif %}
+
+{% if site.has_twitter? %}
+  <div align="center" class="padtopmore">
+  <div class="twitter_link"><a href="{{ site.broadcaster.twitter_profile_url }}" class="twitter-follow-button" />Follow @{{ site.broadcaster.twitter_login }} on Twitter</a></div>
+  </div>
+{% endif %}
+
+{% if page and page.has_rss? %}
+<div class="padtopmore">
+  <a href="{{ page.rss_url }}"><img src="{{ 'feed-icon-14x14' | icon_url }}" border="0" height="14" width="14" class="rss_icon" /></a> <a href="{{ page.rss_url }}">Subscribe with RSS</a>
+</div>
+{% elsif page and page.has_parent? and page.parent.has_rss? %}
+<div class="padtopmore">
+  <a href="{{ page.parent.rss_url }}"><img src="{{ 'feed-icon-14x14' | icon_url }}" border="0" height="14" width="14" class="rss_icon" /></a> <a href="{{ page.parent.rss_url }}">Subscribe with RSS</a>
+</div>
+{% endif %}
+
+<!-- supporter nav ends -->

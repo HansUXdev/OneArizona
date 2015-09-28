@@ -1,0 +1,9 @@
+{% include "features" %}
+
+  <div class="columns_1_flash">{{ content_for_notifications }}</div>
+
+<div class="single_column">
+  <div class="content_{{ request.template }}">
+    {% yield %}
+  </div>
+</div>

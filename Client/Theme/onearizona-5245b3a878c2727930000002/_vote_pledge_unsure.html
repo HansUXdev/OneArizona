@@ -1,0 +1,51 @@
+<div class="padtopmore text-content">
+  <h4>I'm not sure.</h4>
+</div>
+
+{% if page.vote_pledge.unsure_content.size > 0 %}
+    {{ page.vote_pledge.unsure_content }}
+{% endif %}
+
+{% form_for vote_pledge %}
+
+{% hidden_field_tag "vote_pledge[will_vote_status]", 0 %}
+
+<div class="form_errors">{% error_messages_for vote_pledge %}</div>
+
+<p><label for="vote_pledge_content">Any questions we can answer? (optional)</label><br>{% text_area "content", class:"textarea" %}</p>
+
+{% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
+<table>
+	<tr>
+		<td><label for="vote_pledge_first_name">First Name</label><br>{% text_field "first_name", class:"text" %}</td>
+		<td><label for="vote_pledge_last_name">Last Name</label><br>{% text_field "last_name", class:"text" %}</td>
+	</tr>
+</table>
+{% endif %}
+
+{% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
+	<p><label for="vote_pledge_submitted_address">Address (Street, City, Postal code) -- to see if you can vote</label><br>{% text_field "submitted_address", class:"text" %}</p>
+{% endif %}
+
+{% if request.sorta_logged_in? == false %}
+<table>
+	<tr>
+		<td><label for="vote_pledge_email">Email</label><br>{% email_field "email", class:"text" %}</td>
+		{% if site.ask_for_mobiles? %}
+		<td><label for="vote_pledge_mobile_number">Mobile phone (optional)</label><br>{% phone_field "mobile_number", class:"text" %}</td>
+		{% endif %}
+	</tr>
+	<tr height="10"></tr>
+	<tr>
+	  <td><label for="vote_pledge_email_opt_in">{% check_box "email_opt_in", class:"checkbox" %} Send me email updates</label></td>
+		{% if site.ask_for_mobiles? %}
+	  <td><label for="vote_pledge_mobile_opt_in">{% check_box "mobile_opt_in", class:"checkbox" %} Send me text message updates</label></td>
+		{% endif %}
+	</tr>
+</table>
+{% endif %}
+
+	{% submit_tag "Save", class:"submit-button" %}
+	<div class="form_submit"></div>
+
+{% endform_for %}

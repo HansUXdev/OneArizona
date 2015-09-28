@@ -1,0 +1,93 @@
+{% unless request.is_ajax? %}
+<div class="padbottommore">
+<h2>Your {{ site.name }} account</h2>
+</div>
+{% endunless %}
+
+{% form_for signup, html: { :multipart: true } %}
+
+  <div class="one_column padbottom">
+  <div class="form_wrap">
+  <div class="form">
+
+  <div class="padtop">
+	<h4>Public profile</h4>
+	</div>
+
+	<div class="form_errors">{% error_messages_for signup %}</div>
+
+	<div class="padtop">
+	<label for="signup_is_profile_private">{% check_box "is_profile_private", class:"checkbox" %} Don't publish <a href="{{ signup.profile_url }}">my profile</a> on the website</label>
+	</div>
+
+	<table>
+		<tr>
+			<td><p><label for="signup_first_name">First Name</label><br>{% text_field "first_name", class:"text" %}</p></td>
+			<td><p><label for="signup_last_name">Last Name</label><br>{% text_field "last_name", class:"text" %}</p></td>
+		</tr>
+	</table>
+	<p><label for="signup_username">User name</label><br>{% text_field "username", class:"text" %}<br>Your public profile will be at {{ site.full_url }}{% if request.current_signup.has_username? %}{{ request.current_signup.username }}{% else %}username{% endif %}</p>
+	<p><label for="signup_bio">Short bio</label><br>{% text_field "bio", class:"text" %}</p>
+	<p><label for="signup_website">Website</label><br>{% text_field "website", class:"text" %}</p>
+  <p><label for="signup_signup_profile_image">Profile image</label><br>{% file_field "signup_profile.image", class:"file" %}</p>
+	<p><label for="signup_profile_headline">Headline for your profile</label><br>{% text_field "profile_headline", class:"text" %}</p>
+
+  <div class="padtopmore">
+    <h4>Why do you support {{ site.name }}?</h4>
+  </div>
+
+	<p><div class="so_ie_does_not_put_this_in_the_footer">{% text_area "profile_content_editable", class:"textarea-tinymce" %}</div></p>
+
+	{% if settings.is_donor? %}
+	<p><label for="signup_donations_to_raise_amount">I will commit to fundraising: </label><br>{% text_field "donations_to_raise_amount", class:"text" %}</p>
+	{% endif %}
+
+	<p><label for="signup_is_survey_question_private">{% check_box "is_survey_question_private", class:"checkbox" %} Don't publish my survey question answers on the website</label></p>
+	<p><label for="signup_is_profile_searchable">{% check_box "is_profile_searchable", class:"checkbox" %} Allow search engines to find <a href="{{ signup.profile_url }}">my profile</a></label></p>
+	<p><label for="signup_is_leaderboardable">{% check_box "is_leaderboardable", class:"checkbox" %} Include me in leaderboards</label></p>
+	<div class="padtop">
+		{% submit_tag "Save settings", class:"submit-button" %}
+		<div class="form_submit"></div>
+	</div>
+  </div>
+  </div>
+  </div>
+
+  <div class="one_column">
+  <div class="form_wrap">
+  <div class="form">
+
+  <div class="padtop">
+	<h4>Private settings</h4>
+  </div>
+
+  <p><label for="signup_email">Email</label><br>{% email_field "email", class:"text" %}</p>
+  <p>{% check_box "email_opt_in", class:"check_box" %} <label for="signup_email_opt_in">Receive emails</label></p>
+	<table>
+		<tr>
+			<td><p><label for="signup_mobile_number">Mobile</label><br>{% phone_field "mobile_number", class:"text" %}</p></td>
+			<td><p><label for="signup_work_phone_number">Work Phone</label><br>{% text_field "work_phone_number", class:"text" %}</p></td>
+			<td><p><label for="signup_phone_number">Home Phone</label><br>{% phone_field "phone_number", class:"text" %}</p> </td>
+		</tr>
+	</table>
+  <p>{% check_box "mobile_opt_in", class:"check_box" %} <label for="signup_mobile_opt_in">Receive text messages</label></p>
+	<p><label for="signup_submitted_address">Address (Street, City, State, Postal code)</label><br>{% text_field "submitted_address", class:"text" %}</p>
+
+	<p><label for="signup_is_volunteer">{% check_box "is_volunteer", class:"checkbox" %} I want to volunteer</label></p>
+
+	<div class="padtop">
+	  {% submit_tag "Save settings", class:"submit-button" %}
+	  <div class="form_submit"></div>
+	</div>
+
+  </div>
+  </div>
+  </div>
+
+{% endform_for %}
+
+<div class="padtop">
+	{% if request.current_signup.has_password? and request.current_signup.has_email? %}
+		<a href="{{ request.new_password_reset_url }}">Reset your password</a>
+	{% endif %}
+</div>

@@ -1,0 +1,9 @@
+{% if page.show_stream? and request.sorta_logged_in? %}
+  <div style="font-size: 0.9em;">
+  {% if request.current_signup.following_page_ids contains page.id %}
+  <span class="addreaction">Following Reactions</span><span class="plus"><a href="{{ page.unfollow_url }}" class="delete">X</a></span>
+  {% else %}
+  <span class="plus_left"><a href="{{ page.follow_url }}" class="post">+</a></span><span class="addreaction_right"><a href="{{ page.follow_url }}" class="post">Follow Reactions</a></span>
+  {% endif %}
+  </div>
+{% endif %}

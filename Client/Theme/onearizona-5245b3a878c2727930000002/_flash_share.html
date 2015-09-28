@@ -1,0 +1,28 @@
+<div id="flash_share">
+  <div class="headline">{{ flash.message }}</div>
+	<div class="share">
+  	Tell all your friends, they should join you! (<span id="face_tweet_content_charsleft"></span> chars left)
+  	<div class="form padtopless">
+  	  {% form_for face_tweet %}
+  	    {% hidden_field_tag "face_tweet[page_id]", flash.page_id %}
+  	    <div class="form_errors">{% error_messages_for face_tweet %}</div>
+        {% text_field "content", class:"share_url text" %}
+      	<div class="padtopless" style="overflow: auto;">
+        	<div style="float: left;">
+        	  {% check_box "is_twitter", class:"checkbox" %} Tweet
+        	  <span style="margin-left: 10px;">
+        	    {% check_box "is_facebook", class:"checkbox" %} Post on Facebook
+        	  </span>
+						<span style="margin-left: 10px;">
+							(a link will be included)
+						</span>
+        	</div>
+        	<div style="float: right;">
+        	  {% submit_tag "Post", class:"submit-button" %}
+        		<a href="#" class="silver-button close">No Thanks</a>
+        	</div>
+    	  </div>
+  	  {% endform_for %}
+  	</div>
+	</div>
+</div>

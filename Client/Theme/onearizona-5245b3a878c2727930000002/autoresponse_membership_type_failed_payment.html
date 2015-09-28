@@ -1,0 +1,14 @@
+{{ recipient.first_name_or_friend }} --
+<br /><br />
+The monthly payment for your {{ membership.membership_type_name }} failed.  As a result your membership has been
+{% if membership.grace_period %}
+suspended. You have until {{ membership.grace_period_ends_on | date_to_long_string }} to fix your payment information.
+{% else %}
+canceled.
+{% endif %}
+<br/><br/>
+Renew your membership here: <a href="{{ page.full_url_with_recruiter }}">{{ page.full_url_with_recruiter }}</a>
+<br/><br/>
+
+{{ broadcaster.name }}<br/>
+{{ site.full_url }}<br/>

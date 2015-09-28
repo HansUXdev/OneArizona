@@ -10,8 +10,41 @@ background-color: #000;
 }
 
 
+// Foundation Media Queiry Mixins
+  @mixin bp($point) {
+    
+    $bp-small: "(max-width: 40em)";
+    $bp-medium: "(min-width: 40.063em)";
+    $bp-small-medium: "(min-width: 40.063em) and (max-width: 64em)";
+    $bp-large: "(min-width: 64.063em)";
 
+    @if $point == lg {
+      @media #{$bp-large} { @content; }
+    }
+    @else if $point == md {
+      @media #{$bp-medium} { @content; }
+    }
+    @else if $point == sm-md {
+      @media #{$bp-small-medium} { @content; }
+    }
+    @else if $point == sm {
+      @media #{$bp-small}  { @content; }
+    }
 
+  }
+  // An example of how to use Media Queiry Mixins
+    // .test {
+    //   width: 33.33%;
+    //   @include bp(sm) {
+    //     width: 100%;
+    //   }
+    //   @include bp(md){
+    //     width: 1%;
+    //   }
+    //   @include bp(sm-md){
+    //     width: 10%;
+    //   }
+    // }
 
 
 
@@ -40,12 +73,7 @@ $theme-color-5: rgba(226, 92, 51, 0.6);
   $off-canvas-background-color: #1f1f1f;
   $features-text-color: #2f2f2f;
   $features-background-color: #fff;
-// Footer
-  $footer-background-color: $header-background-color;
-  $footer-color: $header-color;
-  $footer-link-color: #C71414;
-  $footer-activities-background-color: darken($header-background-color, 4);
-  
+
   // reset for this POS NAV
   header{
     background: #0E2445 !important;
@@ -55,6 +83,16 @@ $theme-color-5: rgba(226, 92, 51, 0.6);
         box-shadow: 0 0 0 #0E2445 !important;
     }
   }
+
+// Footer
+  $footer-background-color: $header-background-color;
+  $footer-color: $header-color;
+  $footer-link-color: #C71414;
+  $footer-activities-background-color: darken($header-background-color, 4);
+  
+  // site wide footer
+  @import "footer";
+  
 
 
 // dropdowns
@@ -129,7 +167,19 @@ $alt: #df9c3c;
 
   $org-margin: 10px 0;
 
-    .organizations {
+  $org-height:320px; 
+
+
+    .row.title {
+        padding: 0 20px;
+    }
+    
+    .org-section {
+      @media(max-width:992px) {
+        padding: 30px 0;
+      }
+    }   
+    .organization-container {
         margin: 0 0;
     }
     #organizations {
@@ -154,14 +204,16 @@ $alt: #df9c3c;
     }
 
     .organization {
-        width: 100%;
-        height: 320px;
-        margin: $org-margin; // 80px 0;
-        text-align: center;
-        border: $org-border-thinkness solid $org-border-color;
-        -webkit-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-      
+      width: 100%;
+      // @include bp(sm-md){
+      //   width: 50%;
+      // }
+      height: $org-height;
+      margin: $org-margin; // 80px 0;
+      text-align: center;
+      border: $org-border-thinkness solid $org-border-color;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
       // On Hover effect
       &:hover {
         border-color: $org-hover-color; // #00a8ff;
@@ -173,8 +225,7 @@ $alt: #df9c3c;
           -ms-transform: scale(1);
           transform: scale(1);
         }
-      }
-      
+      }  
       .icon-holder {
           position: relative;
           top: 100px;
@@ -205,17 +256,104 @@ $alt: #df9c3c;
           transform: scale(0);
       }
     }
-
-    .row.title {
-        padding: 0 20px;
-    }
-    /*MEDIA */
     
-    .org-section {
-      @media(max-width:992px) {
-        padding: 30px 0;
+    // Style each organation block independantly
+      // Then again, I'm sure I could you just loop through this but that would probably 
+      // blow any staffers / nation builder 'developers' mind because most are really just web admins
+      // and not developers but hey thats the end of my rant...
+
+    // single col
+    $xsm-height:  320px;
+    // 
+    $sm-height:   420px;
+    // 2-col
+    $md-height:   420px;
+    // full 4 col
+    $lg-height:   420px;
+
+    .organization {
+      @include bp(sm-md) {
+          margin-top: 2em;
       }
-    }   
+      &.CNL{
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.ACE{
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.MFVA{
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.BAN{
+        @include bp(sm) {
+          height: 320px;
+        }
+      }
+      &.CASE{
+        height: 520px;
+        @include bp(sm-md) {
+          height: $xsm-height;
+        }
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.AANF{
+        height: 520px;
+        @include bp(sm-md) {
+          height: $xsm-height;
+        }
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.FAS{
+        height: 520px;
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.ADAC{
+        height: 520px;
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+      &.NALEO{
+        height: 340px;
+        @include bp(sm-md) {
+          height: 420px;
+        }
+      }
+      &.PAFCEF{
+        height: 340px;
+        @include bp(sm-md) {
+          height: 420px;
+        }
+      }
+      &.PA{
+        height: 340px;
+        @include bp(sm-md) {
+          height: $xsm-height;
+        }
+      }
+      &.Puente{
+        height: 340px;
+        @include bp(sm-md) {
+          height: $xsm-height;
+        }
+        @include bp(sm) {
+          height: $xsm-height;
+        }
+      }
+    }
+
 // END ORGANIZATION
 
 
@@ -225,6 +363,46 @@ $alt: #df9c3c;
 // Issues section on home page
 //////////
   .issues{
+    .issue-1 .btn.btn-ghost.btn-accent.btn-large{
+        @include bp(sm) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+        @include bp(md) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+    }
+    .issue-2 .btn.btn-ghost.btn-accent.btn-large{
+        @include bp(sm) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+        @include bp(md) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+    }
+    .issue-3 .btn.btn-ghost.btn-accent.btn-large{
+        @include bp(sm) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+        @include bp(md) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+    }
+    .issue-4 .btn.btn-ghost.btn-accent.btn-large{
+        @include bp(sm) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+        @include bp(md) {
+          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
+          margin: 1em;
+        }
+    }
     // Style the icons
     .intro-icon{
       .vote-icon, .immigration-icon, .education-icon, .economic-icon{
@@ -279,8 +457,9 @@ $alt: #df9c3c;
 
 .founder{
     border-radius: 50%;
-    height: 30em;
+    // height: 30em;
     width: 30em;
+    padding-left: 1em;
 }
 
 
@@ -289,9 +468,15 @@ $alt: #df9c3c;
 
 
 section.cta{
-      margin: 1em 1em 3em 1em;
+  margin: 1em 1em 3em 1em;
 }
-
+.cta-btn-row{
+  display: none;
+  margin: 1em 1em 3em 1em;
+  @include bp(sm-md) {
+    display: none;
+  }
+}
 
 
 // featured content slider
@@ -1182,102 +1367,9 @@ ul#page-stream {
   width: 100%;
 }
 
-// site wide footer
-@import "footer";
 
-// footer {
-//   background-color: $footer-background-color;
-//   background-image: $header-texture;
-//   color: $footer-color;
-//   position: relative;
-//   z-index: 10;
-//   a {
-//     color: $footer-link-color;
-//   }
-//   .footer-text p {
-//     margin: 0;
-//   }
-//   .row-fluid [class*="span"] {
-//     min-height: 0;
-//   }
-//   .footer-right {
-//     margin-top: 1em;
-//   }
-//   .fb_iframe_widget {
-//     width: 47px;
-//     overflow: hidden;
-//   }
-//   .footer-social-button {
-//     line-height: 20px;
-//     margin-top: 1em;
-//     &:last-child {
-//       margin-right: 0;
-//     }
-//   }
-//   .footer-social-links {
-//     text-align: center;
-//     a:first-child i:before {
-//       margin-left: 0;
-//     }
-//   }
-//   &.clearfix:before {
-//     content: "";
-//     position: absolute;
-//     display: block;
-//     top: 0;
-//     left: -9998px;
-//     height: 100%;
-//     z-index: -1;
-//     border-right: 9999px solid $footer-background-color;
-//     @include box-shadow(9999px 0 0 0 $footer-background-color);
-//   }
-// }
 
-// .footer-activities.row-fluid {
-//   padding: 1em 0 1.1em 0;
-//   z-index: 5;
-//   position: relative;
-//   [class^="icon-"]:before,
-//   [class*=" icon-"]:before,
-//   .flex-next:before,
-//   .flex-prev:before{
-//     font-size: 1.5em;
-//     margin: .85em 0 0 0.5em;
-//     vertical-align: -25%;
-//     color: $header-color;
-//   }
-//   [class^="icon-"]:hover:before,
-//   [class*=" icon-"]:hover:before,
-//   .flex-next:hover:before,
-//   .flex-prev:hover:before{
-//     color: $shade-2;
-//   }
-//   [class^="icon-"]:active:before,
-//   [class*=" icon-"]:active:before,
-//   .flex-next:active:before,
-//   .flex-prev:active:before{
-//     color: $theme-color-1;
-//   }
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     background: $footer-activities-background-color;
-//     display: block;
-//     top: 0;
-//     height: 100%;
-//     left: -9999px;
-//     z-index: -1;
-//     border-right: 9999px solid $footer-activities-background-color;
-//     @include box-shadow(9999px 0 0 0 $footer-activities-background-color);
-//   }
-// }
 
-// .footer-content {
-//   padding: 2.625em 0;
-//   .footer-text {
-//     padding-bottom: 2em;
-//   }
-// }
 
 // byline used in blogs, suggestion boxes, events, etc.
 

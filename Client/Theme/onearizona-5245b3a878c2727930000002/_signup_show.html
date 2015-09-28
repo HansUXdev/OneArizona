@@ -1,0 +1,32 @@
+<!-- follower block -->
+<div class="padtop padbottom">
+<div class="follow_pic_left">
+{{ signup.bigger_profile_image }}
+</div>
+<div class="follow_pic_right">
+{% comment %}
+<span id="signup_follow_{{ signup.id }}">
+  {% include "signup_follow" with signup %}
+</span>
+{% endcomment %}
+
+<div id="name">{{ signup.published_name_linked }}</div>
+<div style="float: left;"><span class="pc">{{ signup.capital_amount_format }}</span></div>
+<div style="clear: left;"></div>
+
+<div class="padtopless supporter_follow_details">
+{% if signup.has_facebook_info? %}
+<span class="network"><b>f:</b> <a href="{{ signup.facebook_profile_url }}">Link</a></span>
+{% endif %}
+{% if signup.has_twitter_info? %}
+<span clas="network"><b>t:</b> <a href="{{ signup.twitter_profile_url }}">@{{ signup.twitter_login }}</a></span>
+{% endif %}
+<div class="padtopless">
+<span id="signup_follow_{{ signup.id }}">
+  {% include "signup_follow" with signup %}
+</span>
+</div>
+</div>
+
+</div>
+</div>

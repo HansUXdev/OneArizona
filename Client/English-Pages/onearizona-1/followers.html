@@ -1,0 +1,111 @@
+{% include "breadcrumbs" %}
+
+{% if page.headline.size > 0 %}
+	<div id="headline">
+		<h2>{{ page.headline }}</h2>
+	</div>
+{% endif %}
+
+<div id="content">
+
+	{% if request.logged_in? %}
+
+	<div class="padtop padbottom">
+		You have <b>{{ request.current_signup.followers_count }}</b> followers.
+	</div>
+
+	{% for follower in request.current_signup.followers %}
+	  {% assign signup = follower.follower %}
+	  <div class="follow_{% cycle 'left', 'right' %}_column">
+	  {% include "signup_show" %}
+	  </div>
+	  {% cycle ' ', '<div class="clear"></div><hr>' %}
+	{% endfor %}
+
+	{{ request.current_signup.followers | paginate }}
+
+	{% else %}
+
+  	<div>
+		{% if request.sorta_logged_in? and request.current_signup.has_password? == true %}
+	    	<div class="padbottom"><strong>Please verify your password</strong></div>
+	    {% elsif request.sorta_logged_in? and request.current_signup.has_password? == false %}
+	    	<div class="padbottom"><strong>Please activate your account</strong></div>
+	    {% else %}
+	    <div class="padbottom"><strong>Sign in to find your followers</strong></div>
+	    <a href="{{ request.facebook_connect_url }}" style="margin-right: 5px;"><img src="{{ "signin_with_facebook.png" | asset_path }}"></a>
+		<a href="{{ request.twitter_connect_url }}" style="margin-left: 5px;"><img src="{{ "signin_with_twitter.png" | asset_path }}"></a>
+		{% endif %}
+	</div>
+
+	{% if request.sorta_logged_in? and request.current_signup.has_password? == true %}
+
+	{% if request.is_ajax? == true %}
+	<div class="padtopless"></div>
+	{% endif %}
+
+	{% form_for user_session autocomplete:off %}
+
+		<div class="form_errors">{% error_messages_for user_session %}</div>
+
+	    {% hidden_field_tag "user_session[email]", request.current_signup.email %}
+
+	    <p><label for="user_session_password">Password</label><br>{% password_field "password", class:"text" %}</p>
+
+	      {% submit_tag "Sign in with password", class:"submit-button" %}
+	      <div class="form_submit"></div>
+
+	    <div class="padtopmore">
+	  	  <a href="{{ request.new_password_reset_url }}">Forgot your password?</a>
+	  	</div>
+
+	  	 {% if request.current_signup.has_facebook_info? or request.current_signup.has_twitter_info? %}
+	         <div align="center">
+	           <div class="padtop padbottom">
+	           <hr>
+	           <div class="orsignin_wrap"><span id="orsignin">Or sign in with {% if request.current_signup.has_facebook_info? %}Facebook{% endif %} {% if request.current_signup.has_twitter_info? %}or Twitter{% endif %}</span></div>
+	           </div>
+	          {% if request.current_signup.has_facebook_info? %}
+	            <a href="{{ request.facebook_connect_url }}"><img src="{{ "signin_with_facebook.png" | asset_path }}" style="margin-right: 5px;" /></a>
+	          {% endif %}
+	          {% if request.current_signup.has_twitter_info? %}
+	            <a href="{{ request.twitter_connect_url }}"><img src="{{ "signin_with_twitter.png" | asset_path }}" style="margin-left: 5px;" /></a>
+	          {% endif %}
+	          </div>
+	      {% endif %}
+
+	    <div align="center" class="padtop">
+	  	  If you're not {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">click here</a>.
+	  	</div>
+
+
+	{% endform_for %}
+
+	{% elsif request.sorta_logged_in? and request.current_signup.has_password? == false %}
+
+	{% else %}
+
+	{% form_for user_session autocomplete:off %}
+
+	<div class="form_errors">{% error_messages_for user_session %}</div>
+
+	<p><label for="user_session_email">Email Address</label><br>{% email_field "email", class:"text" %}</p>
+
+	<p><label for="user_session_password">Password</label><br>{% password_field "password", class:"text" %}</p>
+
+	<p><label for="user_session_remember_me">{% check_box "remember_me", class:"checkbox" %} Remember me</label></p>
+
+	{% submit_tag "Sign in with email", class:"submit-button" %}
+	<div class="form_submit"></div>
+
+	<div class="padtopmore">
+	  <a href="{{ request.new_password_reset_url }}">Forgot your password?</a>
+	</div>
+
+	{% endform_for %}
+
+	{% endif %}
+
+  {% endif %}
+
+</div>

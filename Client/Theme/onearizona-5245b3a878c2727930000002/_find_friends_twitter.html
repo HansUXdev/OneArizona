@@ -1,0 +1,72 @@
+{% if request.current_signup.crawling_twitter? %}
+
+  <div class="padbottomless" id="twitter_followings">
+    <img src="{{ "bert-loader-small.gif" | asset_path }}" border="0"> Checking Twitter for people who have joined...
+    {{ request.current_signup.crawling_twitter_status_url | auto_refresh }}
+  </div>
+
+{% else %}
+
+  {% if request.current_signup.followings_count_from_twitter == 0 %}
+
+    <div class="padbottomless">
+    None of the people you follow on Twitter have joined.
+    </div>
+
+  {% else %}
+    <div class="padbottom">
+    <b>{{ request.current_signup.followings_count_from_twitter }}</b> people you follow on Twitter have joined.<br/>
+    You are automatically following them.
+    </div>
+
+    {% if request.current_signup.followings_count_from_twitter > 6 %}
+    <div class="supporter_follow_details padbottom">Including...</div>
+    {% endif %}
+
+    <div>
+
+      {% for signup in request.current_signup.followings_from_twitter %}
+        <div class="friends_connected">
+        {{ signup.profile_image }}<br/>
+        {{ signup.published_name_linked }}
+        </div>
+      {% endfor %}
+
+    </div>
+
+  {% endif %}
+
+<div class="padbottom padtopmore">
+
+  {% if request.current_signup.followers_count_from_twitter == 0 %}
+
+    <div class="padbottomless">
+    None of your Twitter followers have joined.
+    </div>
+
+  {% else %}
+    <div class="padbottom">
+    <b>{{ request.current_signup.followers_count_from_twitter }}</b> of your Twitter followers have already joined.<br/>
+    They are automatically following <i>you</i>.
+    </div>
+
+    {% if request.current_signup.followers_count_from_twitter > 6 %}
+    <div class="supporter_follow_details padbottom">Including...</div>
+    {% endif %}
+
+    <div>
+
+      {% for signup in request.current_signup.followers_from_twitter %}
+        <div class="friends_connected">
+        {{ signup.profile_image }}<br/>
+        {{ signup.published_name_linked }}
+        </div>
+      {% endfor %}
+
+    </div>
+
+  {% endif %}
+
+  </div>
+
+{% endif %}

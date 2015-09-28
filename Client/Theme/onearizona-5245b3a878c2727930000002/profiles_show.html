@@ -1,0 +1,141 @@
+{% if profile.profile_headline.size > 0 %}
+	<h2>{{ profile.profile_headline }}</h2>
+{% endif %}
+
+{% if profile.profile_content.size > 0 %}
+<div id="intro">
+	<div class="text-content">
+	{{ profile.profile_content }}
+	</div>
+</div>
+{% endif %}
+
+
+<!-- profile info -->
+
+<div class="padtop">
+<div class="user_profile_pic_left">{{ profile.bigger_profile_image }}</div>
+
+<div class="user_profile_pic_right">
+<div style="float: right;" id="signup_follow_{{ profile.id }}">
+{% include "signup_follow" with profile %}
+</div>
+
+<div id="name">{{ profile.published_name }}</div>
+
+<div style="float: left">
+  {% if profile.has_membership_level_badge %}
+    {% if site.has_membership_page? %}
+      <span class="badge"><a href="{{ site.membership_page.url }}">{{ profile.membership_level_badge }}</a></span>
+    {% else %}
+      <span class="badge">{{ profile.membership_level_badge }}</span>
+    {% endif %}
+  {% endif %}
+  <span class="pc">{{ profile.capital_amount_format }}</span></div>
+<div style="clear: left;"></div>
+
+{% if profile.has_bio? %}
+<div class="padtopless">
+{{ profile.bio | link_urls }}
+</div>
+{% endif %}
+{% if profile.has_website? %}
+<div class="padtopless">
+<a href="{{ profile.website }}">{{ profile.website }}</a>
+</div>
+{% endif %}
+{% if profile.has_twitter_info? %}
+<div class="padtop">
+	<span class="network"><a href="{{ profile.twitter_profile_url }}" class="twitter-follow-button" data-show-count="true" data-show-screen-name="true">>@{{ profile.twitter_login }}</a></span>
+</div>
+{% endif %}
+
+</div>
+</div>
+
+<div class="padbottom" style="clear: both;"></div>
+
+	{% if settings.is_donor? %}
+		{% if profile.has_fundraising_goal? %}
+		  {% assign thermo_width = 200 %}
+		    <div style="float: left; width: {{ thermo_width }}px; padding-left: 3px;">
+		     <div class="thermo_donate_container">
+		     <div class="padbottomless">
+		         <div class="thermometer_progress_text" style="width: {{ thermo_width }}px;">
+		        {% if profile.donations_raised_amount_in_cents == 0 %}
+		          JUST STARTED
+		        {% else %}
+		          {{ profile.donations_raised_amount_format }} RAISED
+		        {% endif %}
+		      </div>
+		      <div align="left" class="thermometer_background" style="width: {{ thermo_width }}px;">
+		      <div class="thermometer_progress" style="width: {{ profile.percent_of_fundraising_goal | times:thermo_width }}px;"></div>
+		      </div>
+		    </div>
+		    </div>
+		   </div>
+		    <div style="float: left;">
+		      <div class="horizontalgoal">GOAL: {{ profile.donations_to_raise_amount_format }}</div>
+		    </div>
+		    <div style="clear: left;"></div>
+		{% endif %}
+	{% endif %}
+
+	{% if site.has_button1? or site.has_button2? or site.has_button3? %}
+
+		<table><tr>
+		{% if site.has_button1? %}
+			<td style="padding-right: 20px;">
+	  		<div class="submit_link_huge"><a href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a></div>
+			</td>
+		{% endif %}
+
+		{% if site.has_button2? %}
+			<td style="padding-right: 20px;">
+    		<div class="submit_link_huge"><a href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a></div>
+			</td>
+		{% endif %}
+
+		{% if site.has_button3? %}
+			<td style="padding-right: 20px;">
+	    	<div class="submit_link_huge"><a href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a></div>
+			</td>
+		{% endif %}
+		</tr></table>
+
+	{% endif %}
+
+
+	{% if profile.most_recent_posts.size > 0 %}
+
+		<div id="content" class="padbottom">
+			<div class="profile_posts">
+
+			<hr/>
+			{% for post in profile.most_recent_posts %}
+
+				<div>
+					{{ post.activity.show }}
+				</div>
+
+				{% if post.activity.show_page? %}
+				<div class="page_excerpt" id="page_{{ post.page.id }}">
+					<blockquote>
+						<h3><a href="{{ post.page.url | recruiter_url recruiter_id:profile.id }}">{{ post.page.headline }}</a></h3>
+						{% include "page_profile" with post.page %}
+					</blockquote>
+				</div>
+				{% endif %}
+
+				{% if post.activity.show %}
+				<hr/>
+				{% endif %}
+			{% endfor %}
+
+			</div>
+
+			<div class="padtop padbottom">
+				{{ profile.most_recent_posts | paginate }}
+			</div>
+		</div>
+	{% endif %}

@@ -1,0 +1,166 @@
+<div id="wide">
+<div class="twocolumn_container" style="padding-bottom: 0px;">
+
+  <!-- left column begins -->
+	<div class="left_column">
+
+		{% if profile.profile_headline.size > 0 %}
+			<h2>{{ profile.profile_headline }}</h2>
+		{% else %}
+			<h2>{{ profile.published_name }}</h2>
+		{% endif %}
+
+		{% if profile.profile_content.size > 0 %}
+		<div id="intro">
+			<div class="text-content">
+			{{ profile.profile_content }}
+			</div>
+		</div>
+		<hr/>
+		{% endif %}
+
+		{% if profile.most_recent_posts.size > 0 %}
+
+			<div id="content" class="padbottom">
+				<div class="profile_posts">
+
+				{% for post in profile.most_recent_posts %}
+
+					<div>
+						{{ post.activity.show }}
+					</div>
+
+					{% if post.activity.show_page? %}
+					<div class="page_excerpt" id="page_{{ post.page.id }}">
+						<blockquote>
+							<h3><a href="{{ post.page.url | recruiter_url recruiter_id:profile.id }}">{{ post.page.headline }}</a></h3>
+							{% include "page_profile" with post.page %}
+						</blockquote>
+					</div>
+					{% endif %}
+
+					{% if post.activity.show %}
+					<hr/>
+					{% endif %}
+				{% endfor %}
+
+				</div>
+
+				<div class="padtop padbottom">
+					{{ profile.most_recent_posts | paginate }}
+				</div>
+			</div>
+		{% endif %}
+
+	</div>
+
+	<div class="right_column">
+
+		<!-- profile info -->
+
+		<table cellpadding="0" cellspacing="0">
+		  <tr>
+		    <td valign="top" align="left" width="72">
+					<div class="supporter_pic_left">{{ profile.bigger_profile_image }}</div>
+		    </td>
+		    <td valign="top" align="left">
+					<div class="supporter_pic_right">
+						<div id="name"><a href="{{ profile.profile_url }}">{{ profile.published_name }}</a></div>
+						<div class="padtopless">
+						  {% if profile.has_membership_level_badge %}
+						    {% if site.has_membership_page? %}
+						      <span class="badge"><a href="{{ site.membership_page.url }}">{{ profile.membership_level_badge }}</a></span>
+						    {% else %}
+						      <span class="badge">{{ profile.membership_level_badge }}</span>
+						    {% endif %}
+						  {% endif %}
+						  <span class="pc">{{ profile.capital_amount_format }}</span>
+						  {% if profile.rule_violations_count == 1 %}
+						    <span class=""> {{ "fugue-flag-yellow" | icon }} Warning</span>
+						  {% elsif profile.rule_violations_count == 2 %}
+						    <span class=""> {{ "fugue-flag" | icon }} 1 violation</span>
+						  {% elsif profile.rule_violations_count == 3 %}
+						    <span class=""> {{ "fugue-flag-gray" | icon }} 2 violations</span>
+						  {% endif %}
+						</div>
+						<div id="signup_follow_{{ profile.id }}" class="padtop">
+							{% include "signup_follow" with profile %}
+						</div>
+					</div>
+		    </td>
+		  </tr>
+		</table>
+
+		{% if profile.has_bio? %}
+		<div class="padtopless">
+		{{ profile.bio | link_urls }}
+		</div>
+		{% endif %}
+		{% if profile.has_website? %}
+		<div class="padtopless">
+		<a href="{{ profile.website }}">{{ profile.website }}</a>
+		</div>
+		{% endif %}
+
+		<div class="padbottomless" style="clear: both;"></div>
+
+		<hr />
+
+		{% if settings.is_donor? %}
+			{% if profile.has_fundraising_goal? %}
+			  {% assign thermo_width = 240 %}
+					<div class="goal">MY GOAL: {{ profile.donations_to_raise_amount_format }}</div>
+			    <div class="thermo_donate_container padbottom">
+			    <div class="padbottomless">
+			    	<div class="thermometer_progress_text" style="width: {{ thermo_width }}px;">
+			        {% if profile.donations_raised_amount_in_cents == 0 %}
+			          JUST STARTED
+			        {% else %}
+			          {{ profile.donations_raised_amount_format }} RAISED
+			        {% endif %}
+			      </div>
+			      <div align="left" class="thermometer_background" style="width: {{ thermo_width }}px;">
+			      <div class="thermometer_progress" style="width: {{ profile.percent_of_fundraising_goal | times:thermo_width }}px;"></div>
+			      </div>
+			    </div>
+			   	</div>
+			{% endif %}
+		{% endif %}
+
+
+		{% if site.has_button1? %}
+			{% if site.button1_page.type_name == 'Donation' %}
+				<div class="padtopless padbottomless">
+					Donate on behalf of {{ profile.published_name }}:
+				</div>
+			{% endif %}
+    	<div class="submit_link_huge"><a href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a></div>
+		{% endif %}
+
+		{% if site.has_button2? %}
+    <div class="padtopless">
+      <div class="submit_link_huge"><a href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a></div>
+    </div>
+		{% endif %}
+
+		{% if site.has_button3? %}
+    <div class="padtopless">
+      <div class="submit_link_huge"><a href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a></div>
+    </div>
+		{% endif %}
+
+		{% if profile.has_twitter_info? %}
+		<hr>
+		<div class="padtopless">
+			<span class="network"><a href="{{ profile.twitter_profile_url }}" class="twitter-follow-button" data-show-count="true" data-show-screen-name="true">>@{{ profile.twitter_login }}</a></span>
+		</div>
+		{% endif %}
+
+
+  </div>
+	<!-- right columns ends -->
+
+  <div style="clear: both;"></div>
+
+</div>
+</div>

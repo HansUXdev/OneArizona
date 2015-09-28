@@ -1,0 +1,171 @@
+{% include "breadcrumbs" %}
+
+{% if page.headline.size > 0 %}
+	<div id="headline">
+		<h2>{{ page.headline }}</h2>
+	</div>
+{% endif %}
+
+<div id="content">
+
+	{% if page.suggestion_box.content.size > 0 %}
+		<div id="intro">
+			{{ page.suggestion_box.content }}
+		</div>
+	{% endif %}
+
+
+	<div class="one_column padbottom">
+
+	  <div class="form_wrap">
+			<div class="form">
+
+				<div class="padtop">
+	      {% form_for suggestion_page %}
+
+	  			<div class="form_errors">{% error_messages_for suggestion_page %}</div>
+
+					<div id="suggestion_page_page_headline_input">
+	  				{% text_field "page_headline", class:"text" %}
+					</div>
+
+					<div id="suggestion_page_form_expanded">
+						<div class="padtopmore">
+							{% text_area "content_editable", class:"textarea-tinymce" %}
+						</div>
+
+						{% if page.suggestion_box.is_image? %}
+							<p><label for="suggestion_page_image">Upload a picture ({% if page.suggestion_box.require_image? == false %}optional, {% endif %}600px wide)</label><br/>{% file_field "image", class:"file" %}</p>
+						{% endif %}
+
+
+						<div class="padtop">
+		  			  {% submit_tag "Post", class:"submit-button" %}
+		  			  <div class="form_submit"></div>
+		  			</div>
+					</div>
+
+	    	{% endform_for %}
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+  		$j("#suggestion_page_page_headline").DefaultValue("Add your suggestion");
+			$j("#suggestion_page_form_expanded").hide();
+			$j('#suggestion_page_page_headline').click(function() {
+				{% if request.logged_in? %}
+					$j("#suggestion_page_form_expanded").show();
+				{% else %}
+					$j("#suggestion_page_page_headline").val("Please sign in first...");
+					$j('#suggestion_page_page_headline').blur();
+					jQuery.ajax({ type: "get", url: "{{ request.new_user_session_url }}.js?page_id={{ page.id }}",
+						success: function(response) { eval(response);}
+					});
+				{% endif %}
+		  });
+		});
+	</script>
+
+
+	<div class="padtopless padbottom">
+		<ul class="tag_list">
+				<li class="{% if request.url_path == page.url or request.url_path == '/' + page.slug %}current{% endif %}"><a href="{{ page.url }}">Most recent</a></li>
+				{% capture alphabetical_url %}/{{ page.slug }}/alphabetical{% endcapture %}
+				<li class="{% if request.url_path == alphabetical_url %}current{% endif %}"><a href="{{ alphabetical_url }}">Alphabetical</a></li>
+				{% for tag_name in page.suggestion_box.tag_names %}
+				  {% capture tag_url %}/{{ page.slug }}/tags/{{ tag_name }}{% endcapture %}
+				  <li class="{% if request.url_path == tag_url %}current{% endif %}"><a href="{{ tag_url }}">{{ tag_name | capitalize }}</a></li>
+				{% endfor %}
+		</ul>
+	</div>
+
+	<div class="padbottom">
+
+	<div class="padtop suggestion_box" id="suggestion_box_page_{{ page.id }}">
+
+	{% if request.url_path == page.url or request.url_path == '/' + page.slug %} <!-- show most recent -->
+		{% assign suggestions = page.suggestion_box.most_recent_suggestions %}
+	{% elsif request.url_path == alphabetical_url %} <!-- show alphabetical -->
+		{% assign suggestions = page.suggestion_box.alphabetical_suggestions %}
+	{% else %} <!-- show tagged -->
+		{% assign suggestions = page.suggestion_box.tagged_suggestion_pages %}
+	{% endif %}
+
+	{% for post in suggestions %}
+	  	<div class="page_excerpt" id="suggestion_page_{{ post.id }}">
+
+  		<h3><a href="{{ post.url }}">{{ post.headline }}</a></h3>
+
+  		<div class="padtopless">
+  		<div class="byline">
+				Posted by {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+		    {% if post.show_stream? %}
+		      {% if post.public_activities_count > 0 %}
+		        &middot; <a href="{{ post.url }}#reactions">{{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}</a>
+		      {% endif %}
+		    {% endif %}
+  	  </div>
+  	  </div>
+
+  		<div class="excerpt truncate-500" data-truncate="500">
+  		  {% if post.suggestion.content.size > 0 %}
+  			  {{ post.suggestion.content }}
+  			{% else %}
+  			  <p>
+  			{% endif %}
+  		</div>
+
+			{% if post.suggestion.is_answered? %}
+				<div class="answer clearfix">
+					<div>
+						<b>
+							Official response from {{ post.suggestion.answer_author.published_name_linked }}
+							{% if post.suggestion.is_answer_type? %}
+								{{ post.suggestion.answer_type_html }}
+							{% endif %}
+						</b>
+					</div>
+					{% if post.suggestion.answer.size > 0 %}
+					<div class="answer_wrap excerpt truncate-500" data-truncate="500">{{ post.suggestion.answer }}</div>
+					{% endif %}
+				</div>
+			{% endif %}
+
+   		{% if post.public_activities_count > 0 %}
+  	  <span class="button small-button"><a href="{{ post.url }}#addreaction"><img src="{{ 'fugue-balloons' | icon_url }}" width="12" height="12" class="reaction_icon_pad" />{{ post.public_activities_count }} reaction{% if post.public_activities_count > 1 %}s{% endif %}</a></span>
+  	  {% else %}
+  	  <span class="button small-button"><a href="{{ post.url }}#addreaction"><img src="{{ 'fugue-balloons' | icon_url }}" width="12" height="12" class="reaction_icon_pad" />Add your reaction</a></span>
+  	  {% endif %}
+
+      {{ "Share" | share_button page_id: post.id }}
+
+  	</div>
+
+  	<hr>
+  {% endfor %}
+
+  <div class="padbottom">
+		{% if request.url_path == page.url %} <!-- show most recent -->
+			{{ page.suggestion_box.most_recent_suggestions | paginate }}
+		{% elsif request.url_path == alphabetical_url %}
+			{{ page.suggestion_box.alphabetical_suggestions | paginate }}
+		{% else %}
+			{{ page.suggestion_box.tagged_suggestions | paginate }}
+		{% endif %}
+  </div>
+
+	</div>
+
+	</div>
+
+	<div id="like_page">
+		<b>Like this page to spread the word</b>
+    {% include "like_page" %}
+	</div>
+
+</div>
