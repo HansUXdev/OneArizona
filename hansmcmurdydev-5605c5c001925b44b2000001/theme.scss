@@ -5,9 +5,15 @@
 
 //* style variables *//
 
-.page-pages-show-basic-wide .features-container{
-background-color: #000;
-}
+  .page-pages-show-basic-wide .features-container{
+  background-color: #000;
+  }
+
+  @mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+  }
 
 
 // Foundation Media Queiry Mixins
@@ -122,7 +128,7 @@ $link-active-color: #000;
 $button-color: #fff;
 $button-background: $theme-color-1;
 $button-hover-color: #fff;
-$button-hover-background: #575757;
+$button-hover-background: #2980b9;     // #575757
 $button-active-color: $theme-color-1;
 $button-active-background: #2e2e30;
 $button-border: 0.4em solid darken($button-background, 15);
@@ -133,7 +139,7 @@ $button-radius: 0;
 $control-color: #fff;
 $control-background: $theme-color-1;
 $control-hover-color: #fff;
-$control-hover-background: #575757;
+$control-hover-background: #2980b9;    //#575757;
 $control-active-color: #fff;
 $control-active-background: #2e2d2f;
 $control-radius: 0;
@@ -158,7 +164,13 @@ $alt: #df9c3c;
 
 // CUSTOM
 @import "1-section-dividers";
+
+@import "1-testimonial";
+
 // @import "1boxify-slider"; 
+
+
+
 // Organization section
 
   $org-border-color:#8E9BA3;   // before the hover effect takes place
@@ -267,14 +279,16 @@ $alt: #df9c3c;
     // 
     $sm-height:   420px;
     // 2-col
-    $md-height:   420px;
+    $md-height:   540px;
     // full 4 col
-    $lg-height:   420px;
+    $lg-height:   620px;
 
     .organization {
+
       @include bp(sm-md) {
           margin-top: 2em;
       }
+
       &.CNL{
         @include bp(sm) {
           height: $xsm-height;
@@ -292,116 +306,143 @@ $alt: #df9c3c;
       }
       &.BAN{
         @include bp(sm) {
-          height: 320px;
-        }
-      }
-      &.CASE{
-        height: 520px;
-        @include bp(sm-md) {
-          height: $xsm-height;
-        }
-        @include bp(sm) {
           height: $xsm-height;
         }
       }
-      &.AANF{
-        height: 520px;
-        @include bp(sm-md) {
-          height: $xsm-height;
-        }
-        @include bp(sm) {
-          height: $xsm-height;
-        }
-      }
-      &.FAS{
-        height: 520px;
-        @include bp(sm) {
-          height: $xsm-height;
-        }
-      }
-      &.ADAC{
-        height: 520px;
-        @include bp(sm) {
-          height: $xsm-height;
-        }
-      }
+
+      // Middle Row
       &.NALEO{
         height: 340px;
-        @include bp(sm-md) {
-          height: 420px;
+        @include bp(md) {
+          height: $sm-height;
         }
       }
       &.PAFCEF{
         height: 340px;
-        @include bp(sm-md) {
-          height: 420px;
+        @include bp(md) {
+          height: $sm-height;
         }
       }
       &.PA{
         height: 340px;
-        @include bp(sm-md) {
-          height: $xsm-height;
+        @include bp(md) {
+          height: $sm-height;
         }
       }
       &.Puente{
         height: 340px;
-        @include bp(sm-md) {
-          height: $xsm-height;
+        @include bp(md) {
+          height: $sm-height;
         }
         @include bp(sm) {
-          height: $xsm-height;
+          height: $sm-height;
         }
       }
+
+      // Last Row
+      &.CASE{
+        height: 520px;
+        @include bp(md) {
+          height: $md-height;
+        }
+        @include bp(sm) {
+          height: $sm-height;
+        }
+      }
+      &.AANF{
+        height: 520px;
+        @include bp(md) {
+          height: $md-height;
+        }
+        @include bp(sm) {
+          height: $sm-height;
+        }
+      }
+      &.FAS{
+        height: 520px;
+        @include bp(md) {
+          height: $md-height;
+        }
+
+        @include bp(sm) {
+          height: $sm-height;
+        }
+      }
+      &.ADAC{
+        height: 520px;
+        @include bp(md) {
+          height: $md-height;
+        }
+
+        @include bp(sm) {
+          height: $sm-height;
+        }
+      }
+
     }
 
 // END ORGANIZATION
 
 
 
+//////////////////////
+// Buttons
+/////////////////////
+
+    .btn.btn-ghost.btn-accent{
+        padding: 1em 3.5em 1em 3.5em;
+        background-color: #3498db;
+        // border: 1px solid black;
+        color: #fff;
+
+        // On Hover
+        &:hover{
+          background-color: transparent;
+          // border: 1px solid blue;
+          color: #000;
+        }
+        &.btn-large{
+          @include bp(sm) {
+            width: 100%;
+          }
+          @include bp(sm-md) {
+            width: 100%;
+          }
+        }
+    }
+
 
 ///////////
 // Issues section on home page
 //////////
   .issues{
-    .issue-1 .btn.btn-ghost.btn-accent.btn-large{
-        @include bp(sm) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
-        @include bp(md) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
+    // margin-bottom: 2em;
+    background-color: #0E2445;
+    
+    p,i,h5{
+      color: #fff;
     }
-    .issue-2 .btn.btn-ghost.btn-accent.btn-large{
-        @include bp(sm) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
-        @include bp(md) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
+    
+    .container .row{
+      margin: 0em 0em 3em 0em;
     }
-    .issue-3 .btn.btn-ghost.btn-accent.btn-large{
-        @include bp(sm) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
-        @include bp(md) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
+
+    .btn.btn-ghost.btn-accent.btn-large:hover{
+      color: #fff;
+      border: 1px solid blue;
     }
-    .issue-4 .btn.btn-ghost.btn-accent.btn-large{
-        @include bp(sm) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
-        @include bp(md) {
-          padding: 1em 3.5em 1em 3.5em; border: 1px solid blue;
-          margin: 1em;
-        }
+
+    .issue-1{
+
+    }
+    .issue-2{
+
+    }
+    .issue-3{
+
+    }
+    .issue-4{
+
     }
     // Style the icons
     .intro-icon{
@@ -447,7 +488,7 @@ $alt: #df9c3c;
     // 
     .intro-content{
       p{
-
+        min-height: 200px;
       }
       h5{
         padding: 0.5em; 
@@ -467,12 +508,51 @@ $alt: #df9c3c;
 
 
 
-section.cta{
-  margin: 1em 1em 3em 1em;
+.cta{
+  // margin: 4em 1em 3em 1em;
+  background-color: #2980b9;
+  .btn-container{
+    margin-top: 2em;
+  }
+
+  .container{
+    .row{
+      margin: 2em 1em 2em 1em;
+
+      .btn.btn-ghost.btn-accent{
+          margin: 1em;
+          // padding: 1em 5.5em 1em 5.5em !important;
+          width: 100%;
+          background-color: #0E2445;
+          // border: 1px solid black;
+          color: #fff;
+
+          // On Hover
+          &:hover{
+            background-color: transparent;
+            border: 1px solid blue;
+            color: #000;
+          }
+          &.btn-large{
+            @include bp(sm) {
+              width: 100%;
+            }
+            @include bp(sm-md) {
+              width: 100%;
+            }
+          }
+      }
+
+    }
+  }
+
 }
+
+
 .cta-btn-row{
   display: none;
   margin: 1em 1em 3em 1em;
+  
   @include bp(sm-md) {
     display: none;
   }
@@ -488,11 +568,26 @@ section.cta{
     // position: fixed;
     font-size: 2em;
     padding: 0em 1em 0em 1em;
-    @media(max-width:767px){
-      position: relative;
-      top: -2em;
-      left: 2em;
+
+    @include bp(sm) {
+      font-size: 5rem !important;
+      position: relative !important;
+      top: -1em !important;
+      right: 30px !important;
     }
+
+    @include bp(sm-md) {
+      font-size: 5rem !important;
+      position: relative !important;
+      top: -2em !important;
+      left: 2em !important;
+    }
+
+    // @media(max-width:767px){
+    //   position: relative;
+    //   top: -2em;
+    //   left: 2em;
+    // }
     @media(min-width:768px){    
       position: relative;
       top: -1em;
@@ -1003,6 +1098,14 @@ nav {
   }
 }
 
+
+
+
+
+
+
+
+
 // page layout if the sidebar is turned on
 
 .twocolumn-container {
@@ -1075,7 +1178,9 @@ nav {
   position: relative;
   margin: 0 .625em 0 0;
   overflow: hidden;
+
   @include border-radius(999px);
+
   a {
     display: block;
   }

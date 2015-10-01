@@ -36,7 +36,7 @@ $footer-activities-background-color: darken($header-background-color, 4);
 
 // dropdowns
 $dropdown-background-color: #202020;
-$dropdown-background-hover-color: #575757;
+$dropdown-background-hover-color: #2980b9;    // #575757;
 $dropdown-background-active-color: #2e2d2f;
 $dropdown-color: #fff;
 $dropdown-hover-color: #fff;
@@ -51,6 +51,8 @@ $subnav-color: #fff;
 $subnav-hover-color: #fff;
 $subnav-active-color: $theme-color-1;
 
+//#0e2445
+
 // text
 $text-color: #2f2f2f;
 $link-color: #9ac760;
@@ -59,11 +61,11 @@ $link-active-color: #000;
 
 // buttons
 $button-color: #fff;
-$button-background: $theme-color-1;
 $button-hover-color: #fff;
-$button-hover-background: #575757;
+$button-background: #0e2445;            // $theme-color-1
+$button-hover-background: #2980b9;      //#575757
 $button-active-color: $theme-color-1;
-$button-active-background: #2e2e30;
+$button-active-background: #2980b9 ;            //#2e2e30
 $button-border: 0.4em solid darken($button-background, 15);
 $button-padding: 1.6em;
 $button-radius: 0;

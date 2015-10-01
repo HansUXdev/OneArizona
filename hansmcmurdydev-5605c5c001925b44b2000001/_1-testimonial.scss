@@ -1,0 +1,187 @@
+/* ==========================================================================
+.testimonial-slider
+========================================================================== */
+  $testimonial-slider-height: 500px;
+  $testimonial-slider-img-width: 82px;
+
+  $testimonial-slider-text-color: #ACB1B4;
+
+  $testimonial-slider-text-size: 2rem;
+  $testimonial-slider-text-weight: 300;
+
+
+
+  .testimonial-slider {
+    // background: url("testimonials-bg.jpg") no-repeat center center;
+    background-size: cover;
+    background-color: #000;
+    
+
+    /* ================================================
+      Hide the slides that are inactive
+    =================================================== */   
+    .slides li{
+      @include opacity(0);
+          &.flex-active-slide{@include opacity(1);}
+    }
+
+
+    /* ================================================
+      Use this if you need to  an individual slide
+    =================================================== */
+      .voting-slide{
+        .avatar{}
+        .testimony{
+            @include bp(sm-md) {
+              font-size: $testimonial-slider-text-size ; //- 0.2rem;// 1.8rem;
+            }
+            @include bp(sm) {
+              font-size: $testimonial-slider-text-size ; // - 1rem;// 1.59rem;
+            }
+        }
+        .author{}
+      }
+      .immigration-slide{
+        .avatar{}
+        .testimony{
+          @include bp(sm) {
+            font-size: $testimonial-slider-text-size - 0.75rem !important;
+          }
+        }
+        .author{}
+      }
+      .education-slide{
+        .avatar{}
+        .testimony{
+            @include bp(sm-md) {
+              font-size: $testimonial-slider-text-size - 0.2rem;// 1.8rem;
+            }
+            @include bp(sm) {
+              font-size: $testimonial-slider-text-size - 0.41rem;// 1.59rem;
+            }
+        }
+        .author{}
+      }
+      .economic-slide{
+        .avatar{}
+        .testimony{
+            @include bp(sm-md) {
+              font-size: $testimonial-slider-text-size - 0.2rem;// 1.8rem;
+            }
+            @include bp(sm) {
+              font-size: $testimonial-slider-text-size - 0.41rem;// 1.59rem;
+            }
+        }
+        .author{}
+      }
+    /* ================================================
+      Use this if you need to  an individual slide
+    =================================================== */
+
+    .flexslider{
+      height: $testimonial-slider-height;
+      @include bp(sm) {
+        height: $testimonial-slider-height + 200px !important;
+      }
+      @include bp(sm-md) {
+        height: $testimonial-slider-height + 200px !important;
+      }
+      @include bp(lg) {
+        height: $testimonial-slider-height + 100px !important;
+      }
+      background-color: #000;
+      border: 4px solid #000;
+    }
+    .flex-viewport{
+      height: $testimonial-slider-height;
+      @include bp(sm) {
+        height: $testimonial-slider-height + 200px !important;
+      }
+      @include bp(sm-md) {
+        height: $testimonial-slider-height + 200px !important;
+      }
+      @include bp(lg) {
+        height: $testimonial-slider-height + 100px !important;
+      }
+    }
+    .avatar {
+        width: 82px;
+        height: 82px;
+        margin: 0 auto;
+        vertical-align: middle;
+        overflow: hidden;
+        border-radius: 50%;
+        border: solid 3px #fff;
+        background-color: #fff;
+    }
+    .avatar img {
+        width: $testimonial-slider-img-width;
+        height: auto;
+    }
+    h2 {
+        color: $testimonial-slider-text-color;
+        font-size: $testimonial-slider-text-size;
+        font-weight: $testimonial-slider-text-weight;
+        font-style: italic;
+        margin: 30px 0;
+    }
+    p {
+        color: $testimonial-slider-text-color;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .slides {
+       > li{
+        // padding: 6em 1em 1em 1em;  
+      }
+      > li.flex-active-slide{
+        padding: 6em 1em 1em 1em;  
+      }
+
+      li h1 {
+          margin: 0;
+          padding: 0;
+      }
+    }
+
+    //
+    .flex-control-nav.flex-control-paging{
+      li{
+        // color: #fff;
+        // background-color: #fff;
+        margin: 0 6px;
+        display: inline-block;
+        zoom: 1;
+      }
+      li a{
+          width: 12px;
+          height: 12px;
+          display: block;
+          background: #5C5F6A;
+          background: rgba(92,95,106,1);
+          cursor: pointer;
+          text-indent: -9999px;
+          -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+          -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+          -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+          box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          border-radius: 20px;
+          color: #fff;
+      }
+      li a.flex-active{
+            background: rgba(255,255,255,0);
+            border: solid 2px #fff;
+            cursor: default;
+            line-height: 1.2;
+      }
+    }
+
+  }
+
+
+
+/* ==========================================================================
+.testimonial-slider
+========================================================================== */

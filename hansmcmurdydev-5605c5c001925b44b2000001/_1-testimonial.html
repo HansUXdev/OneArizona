@@ -1,0 +1,89 @@
+{% comment %}
+
+<!-- Dependacies
+    1).  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/flexslider.min.css">
+    2).  <script scr="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/jquery.flexslider-min.js"></script>
+
+    3). Use Initiate slider with liquid only on the pages that use it.
+        /***************** Initiate Flexslider ******************/[]
+            $('.flexslider').flexslider({
+                animation: "slide"
+            });
+
+    4). _1-testimonial.scss
+
+    // Mixins required
+        @mixin opacity($opacity) {
+            opacity: $opacity;
+            $opacity-ie: $opacity * 100;
+            filter: alpha(opacity=$opacity-ie); //IE8
+        }
+
+
+        // Foundation Media Queiry Mixins
+        @mixin bp($point) {
+            $bp-small: "(max-width: 40em)";
+            $bp-medium: "(min-width: 40.063em)";
+            $bp-small-medium: "(min-width: 40.063em) and (max-width: 64em)";
+            $bp-large: "(min-width: 64.063em)";
+
+            @if $point == lg {
+              @media #{$bp-large} { @content; }
+            }
+            @else if $point == md {
+              @media #{$bp-medium} { @content; }
+            }
+            @else if $point == sm-md {
+              @media #{$bp-small-medium} { @content; }
+            }
+            @else if $point == sm {
+              @media #{$bp-small}  { @content; }
+            }
+        }
+
+-->
+{% endcomment %}
+
+
+
+    <section class="testimonial-slider text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li class="voting-slide">
+                                <div class="avatar">
+                                    <img src="Story-Voting.jpg" alt="Voting Testimony">
+                                </div>
+                                <h2 class="testimony">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</h2>
+                                <p class="author">Name LastName, Speaking on Voting</p>
+                            </li>
+                            <li class="immigration-slide">
+                                <div class="avatar">
+                                    <img src="Story-Immigration.jpeg" alt="Immigration Testimony">
+                                </div>
+                                <h2 class="testimony">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</h2>
+                                <p class="author">Abril Gallardo, Speaking on Immigration</p>
+                            </li>
+                            <li class="education-slide">
+                                <div class="avatar">
+                                    <img src="Story-Education.jpg" alt="Education Testimony">
+                                </div>
+                                <h2 class="testimony">"One of the most important things for our students is to become successful in life and to insure they are represented in curriculums in a dignified way. Educatoin saves the lives of our students, which is why we have to keep fighting for better education and less budget cuts."</h2>
+                                <p class="author">Maria Chacon, Speaking on Education</p>
+                            </li>
+                            <li class="economic-slide">
+                                <div class="avatar">
+                                    <img src="Story-Economic-Justice.JPG" alt="Economic Justice Testimony">
+                                </div>
+                                <h2 class="testimony">"As a community organizer in Phoenix, I see every day the need for economic justice in our schools and neighborhoods. I have student volunteers whose parents work in the service industry and make the current $8.05 Arizona minimum wage and it’s not enough. These companies make more than enough pay their workers a living wage without passing on the cost to the consumer. This movement is not only about raising the minimum wage to $15, but to create a national movement to address income and wealth inequality in the U.S. The fact is that we are the wealthiest country in the world, but there are people who are working full-time who still live in poverty. That is fundamentally wrong and we are taking action to change that. We are strong and we will not stop until every worker has the dignity of a living wage."</h2>
+                                <p class="author">Gilbert Romero, Speaking on Economic Justice</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

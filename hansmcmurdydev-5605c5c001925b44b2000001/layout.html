@@ -20,6 +20,13 @@
   <link rel="stylesheet" href="theme.scss" type="text/css">
   <link rel="stylesheet" href="tablet-and-desktop.scss" type="text/css" media="screen and (min-width: 768px)">
 
+
+    {% if page.is_homepage? == true %}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/flexslider.min.css">
+    {% endif %}
+
+
+
   <!-- because ie8 ignores media queries, we need this -->
   <!--[if IE 8]>
     <link rel="stylesheet" href="tablet-and-desktop.scss" type="text/css">
@@ -55,6 +62,12 @@
   <script type="text/javascript" src="jquery.ui.effect-slide.min.js"></script>
   <script type="text/javascript" src="staged-donations.js"></script>
   <script type="text/javascript" src="collective.js"></script>
+
+    {% if page.is_homepage? == true %}
+        <script scr="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/jquery.flexslider-min.js"></script>
+    {% endif %}
+
+
 
 </head>
 <body class="aware-theme v2-theme {{ page.page_class_name }} js">
@@ -109,25 +122,32 @@
           <!-- Include the issue partial -->
           
           {% comment %}
+            {% include "1-testimonial" %}
           {% endcomment %}
             {% include "1-intro" %}
             {% include "1az-organizations" %}
+
+
 
         {% endif %}
 
         {% case page.slug %}
           {% when 'latino_electorate' %}
               {% include "1-latino_electorate" %}
-
+              <style>
+                .to-top{
+                  margin: 0em 0em 0em 0em !important;
+                }
+              </style>
           {% else %} 
 
                 <div class="main-container" id="middle">
                   <div class="main width-container clearfix">
 
                     {% if request.is_sidebar? %}
-                    {% include "columns_2" %}
+                      {% include "columns_2" %}
                     {% else %}
-                    {% include "columns_1" %}
+                      {% include "columns_1" %}
                     {% endif %}
 
                   </div>
@@ -234,7 +254,7 @@
         {% case page.slug %}
             {% when 'latino_electorate' %}
               {% include "signup_form" with site.signup_page %}
-            {% when 'lhome' %}
+            {% when 'home' %}
               {% include "signup_form" with site.signup_page %}
           {% else %} 
             <!-- Do nothing -->
@@ -354,7 +374,10 @@ $(document).ready(function() {
               speed: 60
           });
 
-      /***************** owl Pricing ******************/
+    /***************** Initiate Flexslider ******************/
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
   {% endif %}
 });  
 
