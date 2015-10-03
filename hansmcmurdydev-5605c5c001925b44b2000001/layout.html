@@ -261,7 +261,11 @@
         {% endcase %}
 
 
-
+{% comment %}
+<!-- Fix the social media links -->
+  {{ request.facebook_connect_url }}
+  {{ request.twitter_connect_url }}
+{% endcomment %}
 
     <section class="to-top">
         <div class="container">
@@ -310,13 +314,14 @@
                                 Sign in with 
                               </p>       
                               <li>
-                                  <a href="{{ request.facebook_connect_url }}" class="facebook-share">
+                                  <a href="https://www.facebook.com/OneArizona" class="facebook-share">
                                       <!-- Facebook -->
                                       <i class="fa fa-facebook"></i>
                                   </a>
                               </li>
                               <li>
-                                  <a href="{{ request.twitter_connect_url }}" class="twitter-share">
+
+                                  <a href="https://twitter.com/onearizona" class="twitter-share">
                                       <!-- Twitter -->
                                       <i class="fa fa-twitter"></i>
                                   </a>
@@ -343,7 +348,8 @@
                 </div>
                 <div class="col-md-3 social-share">
                     <p>Share One Arizona with your friends</p>
-                    <a href="https://twitter.com/hansonconsult" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/onearizona" class="twitter-share"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/OneArizona" class="facebook-share"><i class="fa fa-facebook"></i></a>
                 </div>
             </div>
         </div>
@@ -357,6 +363,13 @@
   </div>
   <!-- #pattern -->
 
+
+<style>
+      .email-signup.form.block{
+        padding: 0em 1em 0em 1em; 
+      }
+
+</style>
 
 <!--  -->
 
