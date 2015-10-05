@@ -16,6 +16,26 @@
   }
 
 
+// Bootstrap Media Queiry Mixins
+@mixin boot($class) {
+  @if $class == xs {
+    @media (max-width: 767px) { @content; }
+  }
+ 
+  @else if $class == sm {
+    @media (min-width: 768px) { @content; }
+  }
+ 
+  @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  }
+ 
+  @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+ 
+}
+
 // Foundation Media Queiry Mixins
   @mixin bp($point) {
     
@@ -480,9 +500,18 @@ $alt: #df9c3c;
       }
     }
     // 
+    $intro-height:200px;
     .intro-content{
       p{
-        min-height: 200px;
+        @include boot(md) {
+        min-height: $intro-height !important;
+        }
+        @include boot(xs) {
+          min-height: $intro-height - 100px;
+        }
+        @include boot(sm) {
+          min-height: $intro-height - 100px;
+        }
       }
       h5{
         padding: 0.5em; 

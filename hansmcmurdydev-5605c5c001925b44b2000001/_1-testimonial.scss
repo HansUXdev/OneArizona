@@ -2,7 +2,12 @@
 .testimonial-slider
 ========================================================================== */
   $testimonial-slider-height: 500px;
-  $testimonial-slider-img-width: 82px;
+  $testimonial-slider-xs: $testimonial-slider-height + 200px !important;
+
+
+  // Image Size
+  $slider-img-width: 82px;
+  $slider-img-height: 82px;
 
   $testimonial-slider-text-color: #ACB1B4;
 
@@ -16,123 +21,98 @@
     background-size: cover;
     background-color: #000;
     
+    /* ======================================================
+      Use this to change the overall Height of of the Slider
+    ========================================================= */
+      .flexslider{
+        height: $testimonial-slider-height;
+        background-color: #000;
+        border: 4px solid #000;
+        @include boot(xs) {
+          height: $testimonial-slider-xs;
+        }
+        @include boot(sm) {
+          height: $testimonial-slider-height + 100px !important;
+        }
+        // @include bp(lg) {
+        //   height: $testimonial-slider-height + 100px !important;
+        // }
+      }
+      .flex-viewport{
+        height: $testimonial-slider-height;
+        @include boot(xs) {
+          height: $testimonial-slider-xs;
+        }
+        @include boot(sm) {
+          height: $testimonial-slider-height + 100px !important;
+        }
+        // @include bp(lg) {
+        //   height: $testimonial-slider-height + 100px !important;
+        // }
+      }
 
     /* ================================================
-      Hide the slides that are inactive
-    =================================================== */   
-    .slides li{
-      @include opacity(0);
-          &.flex-active-slide{@include opacity(1);}
-    }
-
-
-    /* ================================================
-      Use this if you need to  an individual slide
+      Edit the slides Here
     =================================================== */
-      .voting-slide{
-        .avatar{}
-        .testimony{
-            @include bp(sm-md) {
-              font-size: $testimonial-slider-text-size ; //- 0.2rem;// 1.8rem;
-            }
-            @include bp(sm) {
-              font-size: $testimonial-slider-text-size ; // - 1rem;// 1.59rem;
-            }
-        }
-        .author{}
-      }
-      .immigration-slide{
-        .avatar{}
-        .testimony{
-          @include bp(sm) {
-            font-size: $testimonial-slider-text-size - 0.75rem !important;
-          }
-        }
-        .author{}
-      }
-      .education-slide{
-        .avatar{}
-        .testimony{
-            @include bp(sm-md) {
-              font-size: $testimonial-slider-text-size - 0.2rem;// 1.8rem;
-            }
-            @include bp(sm) {
-              font-size: $testimonial-slider-text-size - 0.41rem;// 1.59rem;
-            }
-        }
-        .author{}
-      }
-      .economic-slide{
-        .avatar{}
-        .testimony{
-            @include bp(sm-md) {
-              font-size: $testimonial-slider-text-size - 0.2rem;// 1.8rem;
-            }
-            @include bp(sm) {
-              font-size: $testimonial-slider-text-size - 0.41rem;// 1.59rem;
-            }
-        }
-        .author{}
-      }
-    /* ================================================
-      Use this if you need to  an individual slide
-    =================================================== */
-
-    .flexslider{
-      height: $testimonial-slider-height;
-      @include bp(sm) {
-        height: $testimonial-slider-height + 200px !important;
-      }
-      @include bp(sm-md) {
-        height: $testimonial-slider-height + 200px !important;
-      }
-      @include bp(lg) {
-        height: $testimonial-slider-height + 100px !important;
-      }
-      background-color: #000;
-      border: 4px solid #000;
-    }
-    .flex-viewport{
-      height: $testimonial-slider-height;
-      @include bp(sm) {
-        height: $testimonial-slider-height + 200px !important;
-      }
-      @include bp(sm-md) {
-        height: $testimonial-slider-height + 200px !important;
-      }
-      @include bp(lg) {
-        height: $testimonial-slider-height + 100px !important;
-      }
-    }
-    .avatar {
-        width: 82px;
-        height: 82px;
+    .slides {
+      /* ===================================
+        Change the Images and its Container
+      ====================================== */
+      .avatar {
+        width: $slider-img-width;
+        height: $slider-img-height;
         margin: 0 auto;
+
+        // Center on medium to align with text
+        @include boot(md) {
+          margin: 2em auto; //2em 0em 2em 8em;
+        }
+
         vertical-align: middle;
         overflow: hidden;
         border-radius: 50%;
         border: solid 3px #fff;
         background-color: #fff;
-    }
-    .avatar img {
-        width: $testimonial-slider-img-width;
-        height: auto;
-    }
-    h2 {
-        color: $testimonial-slider-text-color;
-        font-size: $testimonial-slider-text-size;
-        font-weight: $testimonial-slider-text-weight;
-        font-style: italic;
-        margin: 30px 0;
-    }
-    p {
-        color: $testimonial-slider-text-color;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-    .slides {
-       > li{
+        // Height on Medium
+        @include boot(md) {
+          width: $slider-img-width + 100px !important;
+          height: $slider-img-height + 100px !important;
+        }
+        img {
+          width: $slider-img-width;
+          height: auto;
+          // Height on Medium
+          @include boot(md) {
+            width: $slider-img-width + 100px !important;
+            height: $slider-img-height + 100px !important;
+          }
+        }
+      } 
+      /* =====================
+        Edit the slides Here
+      ========================*/
+      .testimony{
+            color: $testimonial-slider-text-color;
+            font-size: $testimonial-slider-text-size;
+            font-weight: $testimonial-slider-text-weight;
+            font-style: italic;
+            margin: 30px 0;
+
+            @include boot(xs) {
+              font-size: $testimonial-slider-text-size - 0.3rem !important;
+            }
+      }
+      .author {
+          color: $testimonial-slider-text-color;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+      }        
+
+      > li{
         // padding: 6em 1em 1em 1em;  
+        // Hide the slides that are inactive
+        @include opacity(0);
+          &.flex-active-slide{@include opacity(1);}
       }
       > li.flex-active-slide{
         padding: 6em 1em 1em 1em;  
@@ -142,9 +122,57 @@
           margin: 0;
           padding: 0;
       }
+
+      /* ================================================
+        Use this if you need to  an individual slide
+      =================================================== */
+      .voting-slide{
+        .avatar{}
+        .testimony{
+            @include boot(xs) {
+              font-size: $testimonial-slider-text-size ;
+            }
+        }
+        .author{}
+      }
+      .immigration-slide{
+        .avatar{}
+        .testimony{
+
+        }
+        .author{}
+      }
+      .education-slide{
+        .avatar{}
+        .testimony{
+
+        }
+        .author{}
+      }
+      .economic-slide{
+        .avatar, img{
+            @include boot(xs) {
+              width: $slider-img-width;
+              height: $slider-img-height;
+            }
+            @include boot(sm) {
+              width: $slider-img-width;
+              height: $slider-img-height;
+            }
+        }
+        .testimony{
+            @include boot(xs) {
+              font-size: $testimonial-slider-text-size - 0.5rem !important;
+            }
+        }
+        .author{}
+      }
     }
 
-    //
+
+    /* ================================================
+      Slider Controller
+    =================================================== */
     .flex-control-nav.flex-control-paging{
       li{
         // color: #fff;
