@@ -189,7 +189,13 @@ $alt: #df9c3c;
 
 // @import "1boxify-slider"; 
 
-
+.header p{
+  color: #fff;
+  font-size: 2rem;
+  padding: 1em;
+  @include boot(md) {
+  }
+}
 
 // Organization section
 
@@ -201,6 +207,18 @@ $alt: #df9c3c;
 
   $org-height:320px; 
 
+  // single col
+  $xsm-height:  320px;
+  // 
+  $sm-height:   420px;
+  // 2-col
+  $md-height:   540px;
+  // full 4 col
+  $lg-height:   620px;
+
+  // Logo Sizes
+    $org-logo-width: 15em;
+    $org-logo-height: 6em;
 
     .row.title {
         padding: 0 20px;
@@ -271,8 +289,8 @@ $alt: #df9c3c;
           -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
           transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
-      .icon-holder > img.icon {
-          width: 40px;
+      .icon-holder  img.icon {
+          width: $org-logo-width;
       }
       .description {
           width: 80%;
@@ -291,112 +309,121 @@ $alt: #df9c3c;
       // blow any staffers / nation builder 'developers' mind because most are really just web admins
       // and not developers but hey thats the end of my rant...
 
-    // single col
-    $xsm-height:  320px;
-    // 
-    $sm-height:   420px;
-    // 2-col
-    $md-height:   540px;
-    // full 4 col
-    $lg-height:   620px;
-
     .organization {
 
       @include bp(sm-md) {
           margin-top: 2em;
       }
+      // First Row
+        &.CNL, &.ACE, &.MFVA, &.BAN{
+          @include bp(md) {
+            height: $sm-height;
+          }
+        }
 
-      &.CNL{
-        @include bp(md) {
-          height: $sm-height;
+        &.CNL{
+          img{
+            width: $org-logo-width;
+          }
         }
-      }
-      &.ACE{
-        @include bp(md) {
-          height: $sm-height;
+        &.ACE{
+          img{}
         }
-      }
-      &.MFVA{
-        @include bp(md) {
-          height: $sm-height;
+        &.MFVA{
+          .icon-holder  img.icon {
+            width: $org-logo-width - 3em;
+          }
         }
-      }
-      &.BAN{
-        @include bp(md) {
-          height: $sm-height;
+        &.BAN{
+          .icon-holder  img.icon {
+            width: $org-logo-width - 5em;
+          }
         }
-      }
 
       // Middle Row
+        // Set the height by the row
+        &.NALEO, &.PAFCEF, &.PA, &.Puente, &.NALEO{
+          height: 340px;
+          @include bp(md) {
+            height: $sm-height;
+          }
+        }
+
       &.NALEO{
-        height: 340px;
-        @include bp(md) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width - 5em;
+          height: 6em;
         }
       }
       &.PAFCEF{
-        height: 340px;
-        @include bp(md) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width;
         }
       }
       &.PA{
-        height: 340px;
-        @include bp(md) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width - 3em;
+          height: $org-logo-height;
         }
       }
       &.Puente{
-        height: 340px;
-        @include bp(md) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width - 5em;
+          height: $org-logo-height + 4em;
+          // align text
+          margin: -4em 0 0 0;
         }
       }
 
       // Last Row
-      &.CASE{
+      &.CASE, &.AANF, &.FAS, &.ADAC{
         height: 520px;
-        @include bp(md) {
+        @include boot(xs) {
+          height: $xsm-height;
+        }
+        @include boot(sm) {
           height: $sm-height;
         }
-        @include bp(sm) {
-          height: $sm-height;
+        @include boot(md) {
+          height: $md-height;
+        }
+      }
+
+      &.CASE{
+        .icon-holder  img.icon {
+          width: $org-logo-width - 8em;
+          height: $org-logo-height;
         }
       }
       &.AANF{
-        height: 520px;
-        @include bp(md) {
-          height: $sm-height;
-        }
-        @include bp(sm) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width - 5em;
         }
       }
       &.FAS{
-        height: 520px;
-        @include bp(md) {
-          height: $sm-height;
-        }
-
-        @include bp(sm) {
-          height: $sm-height;
+        .icon-holder  img.icon {
+          width: $org-logo-width - 7em;
+          height: $org-logo-height;
         }
       }
       &.ADAC{
-        height: 520px;
-        @include bp(md) {
-          height: $sm-height;
-        }
-
-        @include bp(sm) {
-          height: $sm-height;
+        .icon-holder  svg {
+          background-color: #fff;
+          height: $org-logo-height + 1em;
+          width: $org-logo-width - 5em;
+          .st0{
+              fill:#002931;
+          }
         }
       }
 
     }
 
 // END ORGANIZATION
-
+  // $xsm-height:  320px; 
+  // $sm-height:   420px;
+  // $md-height:   540px;
+  // $lg-height:   620px;
 
 
 //////////////////////
