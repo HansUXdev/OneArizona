@@ -128,6 +128,16 @@ $color:#3498db;
 
 .text-content
 {
+	// Style differently on Home Page
+	.section-container.homepage-sections{
+		.header{
+		    padding: 1.5em 2em 4em;
+		}
+		section{    
+			padding: 6em 10%;
+		}
+		.section-1{@include triangle-divider(#2980b9); }
+	}	
 	.section-container{
 		overflow: hidden;
 		svg {
@@ -183,6 +193,9 @@ $color:#3498db;
 				line-height: 1.5;
 				}
 			}
+		/////////////////////////
+		// Refactor this out
+		/////////////////////////
 		// 
 			.text:first-child {
 				@media screen and (max-width: 54em) {
@@ -243,33 +256,30 @@ $color:#3498db;
 			}
 		// 
 
-
-		.section-1{
+		.section-1, .section-2, .section-3, .section-4, .section-5, .section-6
+		{
 			h2,p{color:#fff;}
+		}
+		.section-1{
 			@include triangle-divider(#2980b9); 
 		}
 		.section-2{
-			h2,p{color:#fff;}
 
 		}
 		.section-3{
-			h2,p{color:#fff;}
 			@include triangle-divider(#2980b9); 
 		}
 		.section-4{
-			h2,p{color:#fff;}
 			@include multitriangles( #3498db)
 		}
 		.section-5{
-			h2,p{color:#fff;}
-
 		}
 		.section-6{
-			h2,p{color:#fff;}
 			@include doublediagonal(#2072a7)
 		}
 
 	}
+
 
 	// END container
 
