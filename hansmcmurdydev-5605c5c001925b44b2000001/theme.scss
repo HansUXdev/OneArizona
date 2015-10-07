@@ -117,7 +117,9 @@ $theme-color-5: rgba(226, 92, 51, 0.6);
   $footer-activities-background-color: darken($header-background-color, 4);
   
   // site wide footer
-  @import "footer";
+  // @import "footer";
+  @import "1az-2-footer";
+  // "footer"
   
 
 

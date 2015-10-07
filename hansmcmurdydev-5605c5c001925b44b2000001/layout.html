@@ -285,84 +285,227 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            {{ content_for_footer }}
 
-        {% if site.footer_content.size > 0 %}
-        <div class="footer-text">{{ site.footer_content }}</div>
-        <hr/>
-        {% endif %}
+
+<!-- PLACE FOOTER HERE -->
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+            <h1>
+              Contact Us
+            </h1>
+            <address>
+              <p>
+                <i class="fa fa-home pr-10"></i>
+                  Address:1450 E Indian School Rd #101 
+              </p>
+              <p>
+                <i class="fa fa-globe pr-10"></i>
+                  Phoenix, AZ 85014 USA 
+              </p>
+              <p>
+                <i class="fa fa-mobile pr-10"></i>
+                  Mobile : (123) 456-7890 
+              </p>
+              <p>
+                <i class="fa fa-phone pr-10"></i>
+                  Phone : (602) 429-9430 
+              </p>
+              <p>
+                <i class="fa fa-envelope pr-10"></i>
+                  Email :   <a href="javascript:;">support@onearizona.com</a>
+              </p>
+            </address>
+          </div>
+          <!-- Add Twitter Feed Here -->
+          <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+            <h1 class="text-center">latest tweet</h1>
+            {% comment %}
+
+              {% include "1twitter-feed" %}
+            {% endcomment %}
+            
+            <!-- Example -->
+              <div class="tweet-box">
+                <i class="fa fa-twitter"></i>
+                <em>
+                  Please follow
+                  <a href="javascript:;">@OneArizona</a>
+                  for all future updates of us!
+                  <a href="javascript:;">twitter.com/onearizona</a>
+                </em>
+              </div>
+              <div class="tweet-box">
+                <i class="fa fa-twitter"></i>
+                <em>
+                  Please follow
+                  <a href="javascript:;">@OneArizona</a>
+                  for all future updates of us!
+                  <a href="javascript:;">twitter.com/onearizona</a>
+                </em>
+              </div>
+              <div class="tweet-box">
+                <i class="fa fa-twitter"></i>
+                <em>
+                  Please follow
+                  <a href="javascript:;">@OneArizona</a>
+                  for all future updates of us!
+                  <a href="javascript:;">twitter.com/onearizona</a>
+                </em>
+              </div>
+            <!-- Example -->
+          </div>
+
+          <!-- Site Map Loop -->
+          <div class="col-lg-3 col-sm-3">
+            <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+              <h1>
+                Site Map Loop
+              </h1>
+              <ul class="page-footer-list">
+                {% for child in site.root_nav_pages %}
+                  <li>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="{{ child.url }}">{{ child.name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-3">
+            <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+
+                <h1>
+                  Crafted with
+                </h1>
+                <p>
+
+                  Crafted with <span class="fa fa-heart pulse2"></span> by <a href="#" class="white-fill">Hans McMurdy</a>
+                </p>
+
+                  {{ content_for_footer }}
+
+                  {% if site.footer_content.size > 0 %}
+                  <div class="footer-text">{{ site.footer_content }}</div>
+                  <hr/>
+                  {% endif %}
+              
+              <!--  -->
+                
+
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <footer class="footer-small">
+        <div class="container">
             <div class="row">
-                <div class="col-md-7 login-group">
-                    <div class="footer-links">
-                        <ul class="footer-group">
+              <!-- Right -->
+                <div class="col-md-4 footer-left">
+                  <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
+                             You can style it or move it in different ways, but please leave it in the footer. -->
+                  <div class="copyright">
+                    <p>&copy; VERY PAINFULLY Created with <a href="http://nationbuilder.com/">NationBuilder</a></p>
+                  </div>
+                </div>                
+                
+                <!-- Middle -->
+                <div class="col-md-4 footer-middle">
+                    <ul class="social-link-footer list-unstyled">
+                        <!-- <p> Share </p> -->
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s">
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+
+                        <!--  -->
+                        <!-- <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s">
+                          <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s">
+                          <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s">
+                          <a href="#"><i class="fa fa-skype"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s">
+                          <a href="#"><i class="fa fa-github"></i></a>
+                        </li>
+                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s">
+                          <a href="#"><i class="fa fa-youtube"></i></a>
+                        </li> -->
+                    </ul>
+                </div>
+
+                <!-- Left -->
+                <div class="col-md-4 footer-right">
                             {% if request.logged_in? %}
                               <p class="text-center login-text">
                                 You loged in as 
                               </p>
-                              <li>
+                              <li class="sign-in-list">
                                   <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>
                                   <!-- View your -->
-
                               </li>
-                              <li>{% if site.show_public_profiles? %}
+                              <li class="sign-in-list">
+                                {% if site.show_public_profiles? %}
                                   <a href="{{ request.current_signup.profile_url }}">public profile</a>
-                                  {% endif %}
+                                {% endif %}
                               </li>
-                              <li>
+                              <li class="sign-in-list">
                                   <a href="{{ request.current_signup.settings_url }}">account settings</a>
                                   <!-- or -->
                               </li>
-                              <li>
+                              <li class="sign-in-list">
                                   <a href="{{ request.current_signup.logout_url }}">sign out</a>
                               </li>
                             {% else %}
-                              <p class="text-center login-text">
-                                <!-- login with -->
-                                Sign in with 
-                              </p>       
-                              <li>
-                                  <a href="https://www.facebook.com/OneArizona" class="facebook-share">
-                                      <!-- Facebook -->
-                                      <i class="fa fa-facebook"></i>
-                                  </a>
-                              </li>
-                              <li>
-
-                                  <a href="https://twitter.com/onearizona" class="twitter-share">
-                                      <!-- Twitter -->
-                                      <i class="fa fa-twitter"></i>
-                                  </a>
-                              </li>
-                              <li>or 
-                                <a href="/login" class="email-share">
-                                  <!-- email -->
+                            <ul class="social-link-footer list-unstyled">
+                              <li class="sign-in-list"> 
+                                <!-- <a href="/login" class="email-share">
                                   <i class="fa fa-envelope"></i>
+                                </a> -->
+                                <a href="/login" class="white-fill">
+                                  Login
                                 </a>
                               </li>
-                            {% endif %}
-                        </ul>
-                        <p>
-                            <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
-                             You can style it or move it in different ways, but please leave it in the footer. -->
+                              <!--                               
+                                <li>
+                                    <a href="https://www.facebook.com/OneArizona" class="facebook-share">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
 
-                            VERY PAINFULLY Created with <a href="http://nationbuilder.com/">NationBuilder</a>
-                            <br>
-                        <a href="#">Licence</a>
-                         | Crafted with <span class="fa fa-heart pulse2"></span> by <a href="#">Hans McMurdy</a>
-                         .
-                        </p>
-                    </div>
+                                    <a href="https://twitter.com/onearizona" class="twitter-share">                                      
+                                      <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                              -->
+                            </ul>
+                            {% endif %}
                 </div>
-                <div class="col-md-3 social-share">
-                    <p>Share One Arizona with your friends</p>
-                    <a href="https://twitter.com/onearizona" class="twitter-share"><i class="fa fa-twitter"></i></a>
-                    <a href="https://www.facebook.com/OneArizona" class="facebook-share"><i class="fa fa-facebook"></i></a>
-                </div>
+                
+
+
             </div>
         </div>
     </footer>
+
+
+<!-- PLACE FOOTER HERE -->
         <!-- .width-container -->
 
       </div>
