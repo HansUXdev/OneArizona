@@ -1,0 +1,20 @@
+<span class=" browse-btn"><a href="{{ page.url }}">Browse All Blog</a></span>
+<ul class="main-blog-area">
+{% for post in page.blog.most_recent_blog_posts limit:3 %} 
+<li>
+  <div class="blog-image">
+<a href="{{ post.url }}">
+ {% if post.has_meta_image? %}
+                      <img src="{{ post.meta_image_url }}" />
+                {% else %}
+                  <img src="logo-blog-home.png" />
+                {% endif %}
+  </a>
+  </div>
+  <h3 class="title"><a href="{{ post.url }}">{{ post.headline }}</a></h3>
+  <h4 class="date">{{ post.published_at | date: '%B %d ' }} by {{ post.author.published_name_linked }}  {{ "Share" | share_button page_id: post.id }}</h4>
+ <p>{{ post.blog_post.content | strip_html | truncatechars:100 }}</p>
+<span class="read-more"><a href="{{ post.url }}">Read more</a></span>
+  </li>    
+{% endfor %}
+</ul>

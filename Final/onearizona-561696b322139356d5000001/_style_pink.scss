@@ -1,0 +1,90 @@
+//* style variables *//
+
+// headline font
+$headline-font: "Lato", Helvetica, sans-serif;
+
+// main font
+$font: "Noticia Text", Times, serif;
+
+$theme-color-1: #e84d5b; // accent / logo background color
+$theme-color-2: #fbf8f0; // body background
+$theme-color-3: #1f1f1f; // off-canvas control color
+$theme-color-4: lighten($theme-color-3,5); // off-canvas border color
+
+// form input area focus color
+$theme-color-5: rgba(232, 77, 91, 0.6);
+
+// header and footer
+$header-background-color: #2f2f2f;
+$header-background-color-2: #e84d5b;
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #1f1f1f;
+$features-text-color: #fff;
+$features-background-color: rgba(47, 47, 47, .89);
+$footer-background-color: #2f2f2f;
+$footer-color: #fff;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: #e84d5b;
+
+// dropdowns
+$dropdown-background-color: #2bacb5;
+$dropdown-background-hover-color: #e84d5b;
+$dropdown-background-active-color: #1e9098;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: #2f2f2f;
+$dropdown-accent-color: $theme-color-1;
+
+// subnav colors
+$subnav-background: #e84d5b;
+$subnav-hover-background: #2bacb5;
+$subnav-active-background: #1e9098;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: #2f2f2f;
+
+// text
+$text-color: #2e2d2f;
+$link-color: #e84d5b;
+$link-hover-color: #787878;
+$link-active-color: #000000;
+
+// buttons
+$button-color: #fff;
+$button-background: #e84d5b;
+$button-hover-color: #fff;
+$button-hover-background: #575757;
+$button-active-color: $theme-color-1;
+$button-active-background: #2e2d2f;
+$button-border: 0;
+$button-padding: 2em;
+$button-radius: 999px;
+
+// site nav controls
+$control-color: #fff;
+$control-background: #e84d5b;
+$control-hover-color: #fff;
+$control-hover-background: #2bacb5;
+$control-active-color: #fff;
+$control-active-background: #2e2d2f;
+$control-radius: 5px;
+
+// forms
+$form-color: #616161;
+$form-background: #efebdf;
+
+// shades
+$shade-1: #2bacb5; // mid gray
+$shade-2: #2f2f2f; // dark gray
+$shade-3: #f2e3e4; // light accent
+$shade-3-text-color: #2e2d2f;
+$shade-3-link-color: #e84d5b;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #2bacb5; // alternative accent
