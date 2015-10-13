@@ -5,7 +5,12 @@
 
 //* style variables *//
 
-
+///////////// Other Notes: /////////////
+// 1). Removed content: "\2026"; 
+//
+//
+//
+////////////////////////////////////////
 
 
   .page-pages-show-basic-wide .features-container{
@@ -74,6 +79,16 @@
     //     width: 10%;
     //   }
     // }
+
+////////////////////////////////////////////
+//    Simple Page Specific Changes
+///////////////////////////////////////////
+  @import "1az-pages";
+
+////////////////////////////////////////////
+//  END  Simple Page Specific Changes
+///////////////////////////////////////////
+
 
 
 
@@ -371,6 +386,11 @@ $alt: #df9c3c;
   .btn-container{
     margin-top: 2em;
   }
+  .col-md-6 img{
+      margin: 0 0 0 1em;
+    @include boot(xs) {
+    }
+  }
 
   .container{
     .row{
@@ -607,18 +627,18 @@ p {
   }
 }
 
-hr {
-  border: 0;
-  margin: 0 0 2.25em 0;
-  &:before {
-    content: "\2026";
-    display: block;
-    text-align: center;
-    color: $theme-color-1;
-    font-size: 4em;
-    line-height: .625;
-  }
-}
+// hr {
+//   border: 0;
+//   margin: 0 0 2.25em 0;
+//   &:before {
+//     content: "\2026";
+//     display: block;
+//     text-align: center;
+//     color: $theme-color-1;
+//     font-size: 4em;
+//     line-height: .625;
+//   }
+// }
 
 strong, b {
   font-weight: 700;
@@ -1804,7 +1824,7 @@ ul.membership-list {
   padding: 0;
   margin-bottom: 1.25em;
   &:after {
-    content: "\2026";
+    //content: "\2026";
     display: block;
     text-align: center;
     color: $theme-color-1;
@@ -1837,7 +1857,7 @@ ul.membership-list {
   margin-top: 0 !important;
   margin-bottom: 2.25em;
   &:after {
-    content: "\2026";
+    // content: "\2026";
     display: block;
     text-align: center;
     color: $theme-color-1;
@@ -2083,7 +2103,7 @@ a[class^="login-button"], a[class*=" login-button"] {
   }
   .form-wrap {
     &:after {
-      content: "\2026";
+      //content: "\2026";
       display: block;
       text-align: center;
       color: $theme-color-1;
@@ -2141,14 +2161,22 @@ a.login-button-twitter {
     }
   }
   .event-wrap {
+    margin-top: 2em;
+
     li {
       margin-bottom: 3.25em;
+      // Box Effect
+        background-color: #eee;
+        // border: 5px solid $theme-color-1;
+      padding: 1em;
+
+
     }
     p {
       margin-bottom: .625em;
     }
     h4 {
-      border-left: 5px solid $theme-color-1;
+      //border-left: 5px solid $theme-color-1;
       padding-left: .5em;
       line-height: 1.1;
       margin-bottom: .625em;

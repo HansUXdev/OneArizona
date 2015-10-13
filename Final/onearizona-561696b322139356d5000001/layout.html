@@ -80,7 +80,7 @@
     {% endcase %}
 
 </head>
-<body class="aware-theme v2-theme {{ page.page_class_name }} js">
+<body class="aware-theme v2-theme {{ page.page_class_name }} js page{{ request.url_path | replace: '/', '-' }}" >
   <div id="pattern" class="pattern">
     <div class="wrap" id="wrap">
       <div id="body" class="page-{{ request.template | replace: '_', '-' }}">
@@ -163,18 +163,47 @@
               </style>
           {% else %} 
 
-                <div class="main-container" id="middle">
-                  <div class="main width-container clearfix">
 
+
+                {% case page.slug %}
+                  {% when 'voter_center' %}
                     {% if request.is_sidebar? %}
-                      {% include "columns_2" %}
-                    {% else %}
-                      {% include "columns_1" %}
-                    {% endif %}
+                              <div class="container">                          
+                                <div class="row">
+                                  <div class="col-md-8 voter-main-content">
+                                    {% yield %}
+                                  </div>
+                                  <div class="col-md-4 sidebar">
+                                    <a href="http://servicearizona.com/voterRegistration?popularclick" class="btn btn-ghost btn-accent btn-large">
+                                      Register to Vote !
+                                    </a> 
 
-                  </div>
-                  <!-- .main -->
-                </div>
+                                    <a href="https://www.phoenix.gov/cityclerksite/Pages/electinfoevinfo_cncl.aspx" class="btn btn-ghost btn-accent btn-large">REQUEST A MAIL IN BALLOT</a>
+
+                                    {% include "signup_form" with site.signup_page %}
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                    {% endif %}
+                  {% else %}
+                    <div class="main-container" id="middle">
+                      <div class="main width-container clearfix">
+                        <!-- Sidebars are Ugly... remove them! -->
+                        {% if request.is_sidebar? %}
+                            {% comment %}
+                              {% include "columns_2" %}
+                            {% endcomment %}
+                            
+                            {% include "columns_1" %}
+                          {% else %}
+                            {% include "columns_1" %}
+                        {% endif %}
+
+                      </div>
+                      <!-- .main -->
+                    </div>
+                {% endcase %}
         {% endcase %}
 
         <!-- .main-container -->
@@ -322,10 +351,12 @@
                     <i class="fa fa-globe pr-10"></i>
                       Phoenix, AZ 85014 USA 
                   </p>
+<!-- 
                   <p>
                     <i class="fa fa-mobile pr-10"></i>
                       Mobile : (123) 456-7890 
                   </p>
+-->
                   <p>
                     <i class="fa fa-phone pr-10"></i>
                       Phone : (602) 429-9430 
@@ -371,46 +402,46 @@
           <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
             <h1 class="text-center">latest tweet</h1>
             {% comment %}
+              <!-- Example -->
+                <div class="tweet-box">
+                  <i class="fa fa-twitter"></i>
+                  <em>
+                    Please follow
+                    <a href="javascript:;">@OneArizona</a>
+                    for all future updates of us!
+                    <a href="javascript:;">twitter.com/onearizona</a>
+                  </em>
+                </div>
+                <div class="tweet-box">
+                  <i class="fa fa-twitter"></i>
+                  <em>
+                    Please follow
+                    <a href="javascript:;">@OneArizona</a>
+                    for all future updates of us!
+                    <a href="javascript:;">twitter.com/onearizona</a>
+                  </em>
+                </div>
+                <div class="tweet-box">
+                  <i class="fa fa-twitter"></i>
+                  <em>
+                    Please follow
+                    <a href="javascript:;">@OneArizona</a>
+                    for all future updates of us!
+                    <a href="javascript:;">twitter.com/onearizona</a>
+                  </em>
+                </div>
+              <!-- Example -->
 
-              {% include "1twitter-feed" %}
             {% endcomment %}
             
-            <!-- Example -->
-              <div class="tweet-box">
-                <i class="fa fa-twitter"></i>
-                <em>
-                  Please follow
-                  <a href="javascript:;">@OneArizona</a>
-                  for all future updates of us!
-                  <a href="javascript:;">twitter.com/onearizona</a>
-                </em>
-              </div>
-              <div class="tweet-box">
-                <i class="fa fa-twitter"></i>
-                <em>
-                  Please follow
-                  <a href="javascript:;">@OneArizona</a>
-                  for all future updates of us!
-                  <a href="javascript:;">twitter.com/onearizona</a>
-                </em>
-              </div>
-              <div class="tweet-box">
-                <i class="fa fa-twitter"></i>
-                <em>
-                  Please follow
-                  <a href="javascript:;">@OneArizona</a>
-                  for all future updates of us!
-                  <a href="javascript:;">twitter.com/onearizona</a>
-                </em>
-              </div>
-            <!-- Example -->
+              {% include "1twitter-feed" %}
           </div>
 
           <!-- Site Map Loop -->
           <div class="col-lg-3 col-sm-3">
             <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
               <h1>
-                Site Map Loop
+                Site Map
               </h1>
               <ul class="page-footer-list">
                 {% for child in site.root_nav_pages %}
@@ -464,8 +495,8 @@
                   <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
                   You can style it or move it in different ways, but please leave it in the footer. -->
                   <div class="copyright">
-                    <p>&copy; VERY PAINFULLY Created with <a href="http://nationbuilder.com/">NationBuilder</a></p>
-                    Crafted with <span class="fa fa-heart pulse2"></span> by <a href="#" class="white-fill">Hans McMurdy</a>
+                    <p>&copy;Created with <a href="http://nationbuilder.com/" class="white-fill">NationBuilder</a></p>
+                    Crafted with <span class="fa fa-heart pulse2"></span> by Hans McMurdy with <a href="http://www.ycmmarketing.com/" class="white-fill"> YCM Marketing</a>
                   </div>
                 </div>                
                 

@@ -62,6 +62,16 @@
         width: $slider-img-width;
         height: $slider-img-height;
         margin: 0 auto;
+        
+        // On small
+          @include boot(xs) {
+            width: $slider-img-width + 70px !important;
+            height: $slider-img-height + 70px !important;
+          }
+          @include boot(sm) {
+            width: $slider-img-width + 70px !important;
+            height: $slider-img-height + 70px !important;
+          }
 
         // Center on medium to align with text
         @include boot(md) {
@@ -75,12 +85,23 @@
         background-color: #fff;
         // Height on Medium
         @include boot(md) {
-          width: $slider-img-width + 100px !important;
-          height: $slider-img-height + 100px !important;
+          width: $slider-img-width + 70px !important;
+          height: $slider-img-height + 70px !important;
         }
         img {
           width: $slider-img-width;
           height: auto;
+
+          // On small
+          @include boot(xs) {
+            width: $slider-img-width + 70px !important;
+            height: $slider-img-height + 70px !important;
+          }
+          @include boot(sm) {
+            width: $slider-img-width + 70px !important;
+            height: $slider-img-height + 70px !important;
+          }
+
           // Height on Medium
           @include boot(md) {
             width: $slider-img-width + 100px !important;
@@ -112,7 +133,9 @@
         // padding: 6em 1em 1em 1em;  
         // Hide the slides that are inactive
         @include opacity(0);
-          &.flex-active-slide{@include opacity(1);}
+          &.flex-active-slide{
+            @include opacity(1);
+          }
       }
       > li.flex-active-slide{
         padding: 6em 1em 1em 1em;  
@@ -138,7 +161,13 @@
       .immigration-slide{
         .avatar{}
         .testimony{
-
+            @include boot(xs) {
+              font-size: $testimonial-slider-text-size - 0.55rem !important;
+              margin: 15px 0;
+            }
+            @include boot(sm) {
+              font-size: $testimonial-slider-text-size - 0.2rem !important;
+            }
         }
         .author{}
       }
@@ -162,7 +191,10 @@
         }
         .testimony{
             @include boot(xs) {
-              font-size: $testimonial-slider-text-size - 0.5rem !important;
+              font-size: $testimonial-slider-text-size - 0.45rem !important;
+            }
+            @include boot(sm) {
+              font-size: $testimonial-slider-text-size - 0.2rem !important;
             }
         }
         .author{}
