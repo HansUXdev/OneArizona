@@ -57,13 +57,18 @@
       }
     }
   }
+  // end sidebar
   .voter-main-content{
     .headline{
       padding-top: 0.5em;
       text-align: center;
       font-size: 6.5rem;
     }
+    .like-page{
+      display: none;
+    }
   }
+  // end main-content
 }
 
 

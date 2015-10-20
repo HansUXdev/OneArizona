@@ -80,7 +80,7 @@
 
         vertical-align: middle;
         overflow: hidden;
-        border-radius: 50%;
+        // border-radius: 50%;
         border: solid 3px #fff;
         background-color: #fff;
         // Height on Medium
@@ -92,11 +92,12 @@
           width: $slider-img-width;
           height: auto;
 
-          // On small
+          // On extra small
           @include boot(xs) {
             width: $slider-img-width + 70px !important;
             height: $slider-img-height + 70px !important;
           }
+          // On small
           @include boot(sm) {
             width: $slider-img-width + 70px !important;
             height: $slider-img-height + 70px !important;
@@ -118,8 +119,9 @@
             font-weight: $testimonial-slider-text-weight;
             font-style: italic;
             margin: 30px 0;
-
             @include boot(xs) {
+              padding-right: 2em;
+              padding-left: 2em;
               font-size: $testimonial-slider-text-size - 0.3rem !important;
             }
       }
@@ -179,16 +181,16 @@
         .author{}
       }
       .economic-slide{
-        .avatar, img{
-            @include boot(xs) {
-              width: $slider-img-width;
-              height: $slider-img-height;
-            }
-            @include boot(sm) {
-              width: $slider-img-width;
-              height: $slider-img-height;
-            }
-        }
+        // .avatar, img{
+        //     @include boot(xs) {
+        //       width: $slider-img-width;
+        //       height: $slider-img-height;
+        //     }
+        //     @include boot(sm) {
+        //       width: $slider-img-width;
+        //       height: $slider-img-height;
+        //     }
+        // }
         .testimony{
             @include boot(xs) {
               font-size: $testimonial-slider-text-size - 0.45rem !important;

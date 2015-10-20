@@ -340,7 +340,7 @@ nav, .subnav {
   border-top: 0;
   float: right;
   height: auto;
-  max-width: 68.2261208577%;
+  max-width: 70%  ; //68.2261208577%;
   margin-left: 1.949317738791%;
   position: static;
   width: auto;
@@ -352,7 +352,7 @@ nav, .subnav {
   }
   li {
     display: inline-block;
-    margin: 0 .625em 0 0;
+    margin: 5px .625em 0 0;
     position: relative;
     a {
       display: block;

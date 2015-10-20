@@ -15,15 +15,16 @@
   <!-- CDN's -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 
   <!-- Collective Theme -->
   <link rel="stylesheet" href="theme.scss" type="text/css">
   <link rel="stylesheet" href="tablet-and-desktop.scss" type="text/css" media="screen and (min-width: 768px)">
 
 
-    {% if page.is_homepage? == true %}
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/flexslider.min.css">
-    {% endif %}
+  {% if page.is_homepage? == true %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/flexslider.min.css">
+  {% endif %}
 
 
 
@@ -75,6 +76,14 @@
       {% else %} 
         {% if page.is_homepage? == true %}
             <script scr="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/jquery.flexslider-min.js"></script>
+
+            <!-- Text Effect For .features-headline -->
+            <script src="typewriter.js"></script>
+            <!-- Responsive TEXT -->
+            <script src="jquery.fittext.js"></script>
+            <script src="jquery.lettering.js"></script>
+            <script src="jquery.textillate.js"></script>
+            <!-- Responsive TEXT -->
         {% endif %}
 
     {% endcase %}
@@ -168,6 +177,8 @@
                 {% case page.slug %}
                   {% when 'voter_center' %}
                     {% if request.is_sidebar? %}
+                      {% comment %}
+                      {% endcomment %}
                               <div class="container">                          
                                 <div class="row">
                                   <div class="col-md-8 voter-main-content">
@@ -311,6 +322,28 @@
             <!-- Do nothing -->
         {% endcase %}
 
+<!--       <div class="text-content">
+        <div class="section-container homepage-sections">
+           <section class="section-1"></section>
+        </div>
+      </div> -->
+           <div class="twitter-container">
+                 <div class="row twitter-row" >
+                  <h2 class="text-center">Follow Us on Twitter</h2>
+                  {% comment %}
+                   <div class="col-sm-6 col-md-6 left-feed">
+                     {% include "1twitter-hashtag" %}
+                   </div>
+                  {% endcomment %}
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4 right-feed">
+                      {% include "1twitter-feed" %}
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                 </div>
+           </div>
+
+
 
 {% comment %}
 <!-- Fix the social media links -->
@@ -336,7 +369,7 @@
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+          <div class="col-lg-4 col-sm-4 footer-column address">
             <!--  -->
               <div class="contact-section">
                 <h1 class="text-center">
@@ -345,100 +378,56 @@
                 <address>
                   <p>
                     <i class="fa fa-home pr-10"></i>
-                      Address:1450 E Indian School Rd #101 
+                      Address: 530 E. McDowell Rd. Suite 107
                   </p>
                   <p>
                     <i class="fa fa-globe pr-10"></i>
-                      Phoenix, AZ 85014 USA 
+                      Phoenix, AZ 85004 USA 
                   </p>
-<!-- 
-                  <p>
-                    <i class="fa fa-mobile pr-10"></i>
-                      Mobile : (123) 456-7890 
-                  </p>
--->
                   <p>
                     <i class="fa fa-phone pr-10"></i>
                       Phone : (602) 429-9430 
                   </p>
                   <p>
                     <i class="fa fa-envelope pr-10"></i>
-                      Email :   <a href="javascript:;">support@onearizona.com</a>
+                      Email :   <a href="javascript:;">Onearizona73@gmail.com</a>
                   </p>
                 </address>
               </div>
             <!--  -->
-                    <ul class="social-link-footer list-unstyled">
-                        <!-- <p> Share </p> -->
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
-                          <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s">
-                          <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
+              <ul class="social-link-footer list-unstyled">
+                  <!-- <p> Share </p> -->
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                  </li>
 
-                        <!--  -->
-                        <!-- <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s">
-                          <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s">
-                          <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s">
-                          <a href="#"><i class="fa fa-skype"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s">
-                          <a href="#"><i class="fa fa-github"></i></a>
-                        </li>
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s">
-                          <a href="#"><i class="fa fa-youtube"></i></a>
-                        </li> -->
-                    </ul>
+                  <!--  -->
+                  <!-- <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s">
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s">
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s">
+                    <a href="#"><i class="fa fa-skype"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s">
+                    <a href="#"><i class="fa fa-github"></i></a>
+                  </li>
+                  <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s">
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                  </li> -->
+              </ul>
           </div>
           <!-- Add Twitter Feed Here -->
-          <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
-            <h1 class="text-center">latest tweet</h1>
-            {% comment %}
-              <!-- Example -->
-                <div class="tweet-box">
-                  <i class="fa fa-twitter"></i>
-                  <em>
-                    Please follow
-                    <a href="javascript:;">@OneArizona</a>
-                    for all future updates of us!
-                    <a href="javascript:;">twitter.com/onearizona</a>
-                  </em>
-                </div>
-                <div class="tweet-box">
-                  <i class="fa fa-twitter"></i>
-                  <em>
-                    Please follow
-                    <a href="javascript:;">@OneArizona</a>
-                    for all future updates of us!
-                    <a href="javascript:;">twitter.com/onearizona</a>
-                  </em>
-                </div>
-                <div class="tweet-box">
-                  <i class="fa fa-twitter"></i>
-                  <em>
-                    Please follow
-                    <a href="javascript:;">@OneArizona</a>
-                    for all future updates of us!
-                    <a href="javascript:;">twitter.com/onearizona</a>
-                  </em>
-                </div>
-              <!-- Example -->
-
-            {% endcomment %}
-            
-              {% include "1twitter-feed" %}
-          </div>
-
           <!-- Site Map Loop -->
-          <div class="col-lg-3 col-sm-3">
+          <div class="col-lg-4 col-sm-4 footer-column">
             <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
               <h1>
                 Site Map
@@ -453,7 +442,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-3">
+          <div class="col-lg-4 col-sm-4 footer-column">
             <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
 
                 <h1 class="text-center">
@@ -558,9 +547,6 @@
 
 <!--  -->
 
-{% if page.is_homepage? == true %}
-    <script src="typewriter.js"></script>
-{% endif %}
 
 
 
@@ -586,7 +572,6 @@ $(document).ready(function() {
                   This Data is based of #1 but I can't find the exact data they "referenced" from pew...
 
                   // FACT CHECK THESE NUMBERS !!!
-
                   1). http://www.nytimes.com/2015/09/14/opinion/latinos-for-donald-trump.html?smid=fb-share&_r=1
                   
                   // Other related data for consideration

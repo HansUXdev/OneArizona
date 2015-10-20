@@ -252,6 +252,44 @@ $alt: #df9c3c;
 // Buttons
 /////////////////////
 
+$donate-btn-bgcolor: #215E88;
+$donate-btn-bgcolor-hover:#a0d3e8;
+
+$volunteer-btn-bgcolor:#43AC6A;
+$volunteer-btn-bgcolor-hover:#a0d3e8;
+
+    .parent-donate{
+      background-color: $donate-btn-bgcolor;
+      color: #fff;
+      &:hover{
+        background-color: $donate-btn-bgcolor-hover !important;
+        color: #000 !important;
+      }
+    }
+    .parent-volunteer{
+      background-color: $volunteer-btn-bgcolor;
+      color: #fff;
+      &:hover{
+        background-color: $volunteer-btn-bgcolor-hover !important;
+        color: #fff !important;
+      }
+    }
+
+
+    .btn-container{
+      margin-bottom: 2em;
+      // If you want to change the colors use this override them
+      .register-btn{
+        &:hover{}
+      }
+      .dontate-btn{
+        &:hover{}
+      }
+      .volunteer-btn{
+        &:hover{}
+      }
+    }
+
     .btn.btn-ghost.btn-accent{
         padding: 1em 3.5em 1em 3.5em;
         background-color: #3498db;
@@ -274,6 +312,29 @@ $alt: #df9c3c;
         }
     }
 
+    .btn.btn-ghost.dark-btn{
+        margin: 1em;
+        // padding: 1em 5.5em 1em 5.5em !important;
+        width: 100%;
+        background-color: #0E2445;
+        // border: 1px solid black;
+        color: #fff;
+
+        // On Hover
+        &:hover{
+          background-color: transparent;
+          border: 1px solid blue;
+          color: #000;
+        }
+        &.btn-large{
+          @include bp(sm) {
+            width: 100%;
+          }
+          @include bp(sm-md) {
+            width: 100%;
+          }
+        }
+    }
 
 ///////////
 // Issues section on home page
@@ -309,41 +370,45 @@ $alt: #df9c3c;
     }
     // Style the icons
     .intro-icon{
+      i {
+        color: #4FADEA;
+      }
+
       .vote-icon, .immigration-icon, .education-icon, .economic-icon{
         font-size: 4em;
       }
       .vote-icon{
-        padding: 1em 40% 1em 40%;
+        padding: 1em 40% 0.5em 40%;
         @media only screen and (max-width: 40em) { padding: 1em 40% 1em 40%;
         }
         @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-          padding: 1em 40% 1em 45%;
+          padding: 1em 40% 0.5em 45%;
         }
       }
       .immigration-icon{
-        padding: 1em 40% 1em 40%;
+        padding: 1em 40% 0.5em 40%;
         @media only screen and (max-width: 40em) { padding: 1em 40% 1em 40%;
         }
         @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-          padding: 1em 40% 1em 45%;
+          padding: 1em 40% 0.5em 45%;
         }
 
       }
       .education-icon{
-        padding: 1em 40% 1em 40%;
+        padding: 1em 40% 0.5em 40%;
         @media only screen and (max-width: 40em) { padding: 1em 40% 1em 40%;
         }
         @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-          padding: 1em 40% 1em 45%;
+          padding: 1em 40% 0.5em 45%;
         }
 
       }
       .economic-icon{
-        padding: 1em 40% 1em 40%;
+        padding: 1em 40% 0.5em 40%;
         @media only screen and (max-width: 40em) { padding: 1em 40% 1em 40%;
         }
         @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-          padding: 1em 40% 1em 45%;
+          padding: 1em 40% 0.5em 45%;
         }
 
       }
@@ -352,6 +417,8 @@ $alt: #df9c3c;
     $intro-height:200px;
     .intro-content{
       p{
+        padding: 1em 0 0 0;
+        line-height: 130%;
         @include boot(md) {
         min-height: $intro-height !important;
         }
@@ -363,7 +430,8 @@ $alt: #df9c3c;
         }
       }
       h5{
-        padding: 0.5em; 
+        padding: 0.5em;
+        text-transform: uppercase;
       }
     }
   }
@@ -388,38 +456,11 @@ $alt: #df9c3c;
   }
   .col-md-6 img{
       margin: 0 0 0 1em;
-    @include boot(xs) {
-    }
   }
 
   .container{
     .row{
       margin: 2em 1em 2em 1em;
-
-      .btn.btn-ghost.btn-accent{
-          margin: 1em;
-          // padding: 1em 5.5em 1em 5.5em !important;
-          width: 100%;
-          background-color: #0E2445;
-          // border: 1px solid black;
-          color: #fff;
-
-          // On Hover
-          &:hover{
-            background-color: transparent;
-            border: 1px solid blue;
-            color: #000;
-          }
-          &.btn-large{
-            @include bp(sm) {
-              width: 100%;
-            }
-            @include bp(sm-md) {
-              width: 100%;
-            }
-          }
-      }
-
     }
   }
 
@@ -530,6 +571,29 @@ $alt: #df9c3c;
 // mobile nav
 @import "mobile-nav";
 
+.social-media-links{
+  margin: 10px 0 0px 0;
+
+  .social-share{
+    // @media screen and (max-width: 991px){
+    //   margin: 0 0em 0em 4em;
+    // }
+    .twitter-share, .facebook-share{
+      height: 30px;
+      width: 30px;
+      i{
+        margin-top: 5px;
+      }
+    }
+    .facebook-share{
+      margin: 0px 20px 0 0;
+    }
+  }
+}
+
+
+
+
 // staged donations
 @import "staged-donations";
 
@@ -537,135 +601,134 @@ $alt: #df9c3c;
 @import "updates";
 
 // applies border-box to all elements
-
-* {
-  @include box-sizing(border-box);
-}
-
-.clearfix {
-  @include nb-clearfix;
-}
-
-html,
-button,
-input,
-select,
-textarea {
-  color: $form-color;
-}
-
-select {
-  color: #000;
-}
-
-// headlines
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $headline-font;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2 {
-  line-height: 1.1;
-}
-
-h3 {
-  line-height: 1.25em;
-}
-
-h1 {
-  font-size: 2.25em;
-}
-
-h2 {
-  font-size: 1.75em;
-  // border-left: 5px solid $theme-color-1;
-  padding-left: .5em;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
-h4 {
-  font-size: 1.25em;
-}
-
-h5 {
-  font-size: 1em;
-}
-
-h6 {
-  font-size: .75em;
-  text-transform: uppercase;
-}
-
-.hide {
-  display: none;
-}
-
-// general link styles
-
-a {
-  color: $link-color;
-  text-decoration: none;
-  outline: none;
-  &:hover {
-    color: $link-hover-color;
+  * {
+    @include box-sizing(border-box);
   }
-  &:active {
-    color: $link-active-color;
-  }
-}
 
-p {
-  margin-bottom: 1.625em;
+  .clearfix {
+    @include nb-clearfix;
+  }
+
+  html,
+  button,
+  input,
+  select,
+  textarea {
+    color: $form-color;
+  }
+
+  select {
+    color: #000;
+  }
+
+  // headlines
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $headline-font;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2 {
+    line-height: 1.1;
+  }
+
+  h3 {
+    line-height: 1.25em;
+  }
+
+  h1 {
+    font-size: 2.25em;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    // border-left: 5px solid $theme-color-1;
+    padding-left: .5em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.25em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: .75em;
+    text-transform: uppercase;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  // general link styles
+
   a {
-    text-decoration: underline;
+    color: $link-color;
+    text-decoration: none;
+    outline: none;
+    &:hover {
+      color: $link-hover-color;
+    }
+    &:active {
+      color: $link-active-color;
+    }
   }
-}
 
-// hr {
-//   border: 0;
-//   margin: 0 0 2.25em 0;
-//   &:before {
-//     content: "\2026";
-//     display: block;
-//     text-align: center;
-//     color: $theme-color-1;
-//     font-size: 4em;
-//     line-height: .625;
-//   }
-// }
+  p {
+    margin-bottom: 1.625em;
+    a {
+      text-decoration: underline;
+    }
+  }
 
-strong, b {
-  font-weight: 700;
-}
+  // hr {
+  //   border: 0;
+  //   margin: 0 0 2.25em 0;
+  //   &:before {
+  //     content: "\2026";
+  //     display: block;
+  //     text-align: center;
+  //     color: $theme-color-1;
+  //     font-size: 4em;
+  //     line-height: .625;
+  //   }
+  // }
 
-// allows embedded images to expand/contract with viewport
+  strong, b {
+    font-weight: 700;
+  }
 
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  border: none;
-}
+  // allows embedded images to expand/contract with viewport
 
-.chromeframe {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: none;
+  }
 
-body {
-  background: $background-texture repeat $theme-color-2;
-  margin: 0;
-  font: 14px $font;// 100%/1.625 $font;
-  color: $text-color;
-}
+  .chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+  }
+
+  body {
+    background: $background-texture repeat $theme-color-2;
+    margin: 0;
+    font: 14px $font;// 100%/1.625 $font;
+    color: $text-color;
+  }
 
 .pattern {
   overflow-x: hidden;

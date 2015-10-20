@@ -1,29 +1,44 @@
 
         <nav id="menu" role="navigation">
+            <ul class="social-media-links">
+                <div class="social-share">
+                  <div class="col-xs-6">
+                    <a href="https://twitter.com/onearizona" class="twitter-share">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </div>
+                  <div class="col-xs-6">
+                    <a href="https://www.facebook.com/OneArizona" class="facebook-share">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </div>
+                </div>
+            </ul>
           <ul id="topnav" class="topnav desktop-nav">
             {% for child in site.root_nav_pages %}
-            {% if child.leaf? or child.nav_children.size == 0 %}
-            <li {% if child.is_or_is_ancestor_of_current_page? %}class="active"{% endif %}>
-              <a href="{{ child.url }}">{{ child.name }}</a>
-            </li>
-            {% else %}
-            <li class="{% if child.is_or_is_ancestor_of_current_page? %}active{% endif %} drop">
-              <a href="{{ child.url }}">{{ child.name }} <i class="icon-angle-down"></i></a>
-              <ul class="sub">
-                {% if site.show_parent_in_nav_dropdown? %}
-                <li class="show-parent"><a href="{{ child.url }}">{{ child.name }}</a></li>
-                {% else %}
-                <li class="show-parent mobile-visible"><a href="{{ child.url }}">{{ child.name }}</a></li>
-                {% endif %}
-                {% for child2 in child.nav_children %}
-                <li><a href="{{ child2.url }}">{{ child2.name }}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
-            {% endif %}
+              {% if child.leaf? or child.nav_children.size == 0 %}
+              <li class="parent{{ child.url | replace: '/', '-'  }}" {% if child.is_or_is_ancestor_of_current_page? %} class="active "{% endif %}>
+                <a class="link{{ child.url | replace: '/', '-'  }}" href="{{ child.url }}">{{ child.name }}</a>
+              </li>
+              {% else %}
+              <li class="{% if child.is_or_is_ancestor_of_current_page? %}active{% endif %} drop ">
+                <a class="link{{ child.url | replace: '/', '-'  }}" href="{{ child.url }}">{{ child.name }} <i class="icon-angle-down"></i></a>
+                <ul class="sub">
+                  {% if site.show_parent_in_nav_dropdown? %}
+                    <li class="show-parent"><a class="link{{ child.url | replace: '/', '-'  }}" href="{{ child.url }}">{{ child.name }}</a></li>
+                  {% else %}
+                    <li class="show-parent mobile-visible"><a class="link{{ child.url | replace: '/', '-'  }}" href="{{ child.url }}">{{ child.name }}</a></li>
+                  {% endif %}
+                  {% for child2 in child.nav_children %}
+                    <li><a class="link{{ child.url | replace: '/', '-'  }}" href="{{ child2.url }}">{{ child2.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endif %}
             {% endfor %}
           </ul>
           {% if request.logged_in? %}
+          {% comment %}
           <div class="user-menu active">
             <a class="user-menu-profile-link" href="{{ request.current_signup.settings_url }}"><i class="icon-user"></i><i class="icon-angle-down"></i><span>Profile</span></a>
             <div class="user-menu-sub">
@@ -59,16 +74,19 @@
               </div>
             </div>
           </div>
+          {% endcomment %}
           {% else %}
-          <div class="user-menu">
-            <a class="user-menu-profile-link" href="/login"><i class="icon-user"></i><i class="icon-angle-down"></i><span>Sign In</span></a>
-            <div class="user-menu-sub">
-              <a class="login-button-facebook" href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i>Facebook</a>
-              <a class="login-button-twitter" href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i>Twitter</a>
-              <span>Or sign in with <a href="/login">email</a></span> 
-              <span>Don't have an account? <a href="/login">Register now</a></span>
+          {% comment %}
+            <div class="user-menu">
+              <a class="user-menu-profile-link" href="/login"><i class="icon-user"></i><i class="icon-angle-down"></i><span>Sign In</span></a>
+              <div class="user-menu-sub">
+                <a class="login-button-facebook" href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i>Facebook</a>
+                <a class="login-button-twitter" href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i>Twitter</a>
+                <span>Or sign in with <a href="/login">email</a></span> 
+                <span>Don't have an account? <a href="/login">Register now</a></span>
+              </div>
             </div>
-          </div>
+          {% endcomment %}
           {% endif %}
         </nav>
 

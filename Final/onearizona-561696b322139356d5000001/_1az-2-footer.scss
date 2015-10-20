@@ -46,8 +46,31 @@ To top
 .sign-in-list{
   list-style: none;
 }
+/* ==========================================================================
+                            Twitter Footer
+========================================================================== */
+  .twitter-container{
+    margin: 2em 0 -2em 0;
+    background: #215E86;
+    .twitter-row{
+      padding: 0em 2em 1em 2em;
+    }
+    h2{
+      margin: 1.5em 0 2em 0;
+      color: #fff;
+    }
+    .left-feed, .right-feed{
+      @include boot(xs) {
+        margin: 0 10% 0 10%;
+      }
+    }
+    .right-feed{
+      @include boot(xs) {
+        padding-top: 2em;
+      }
+    }
 
-
+  }
 
 /* ==========================================================================
                             Top Footer
@@ -108,7 +131,7 @@ To top
             }
             address a { color: #48cfad }
 
-            .col-lg-3.col-sm-3{
+            .footer-column{
               @include boot(xs) {
                 padding: 2em 2em 2em 1em;
                 margin: 0em 0em 0em 0em;
@@ -120,6 +143,9 @@ To top
                   padding: 0% 13%;
                 }
               }
+              // .tweet-feed{
+              //   margin: ;
+              // }
             }
         }
 
