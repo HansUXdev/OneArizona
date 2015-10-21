@@ -1,0 +1,30 @@
+{
+  "name": "simple-mega-menu",
+  "description": "A mega menu for Foundation 6.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hans McMurdy",
+    "url": "https://github.com/hansUXdev"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-uglify": "^1.1.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-ruby-sass": "^1.0.0-alpha.3",
+    "gulp-sass": "^2.0.4",
+    "octophant": "0.1.0",
+    "rimraf": "^2.3.2",
+    "run-sequence": "^1.1.4",
+    "gulp-load-plugins": "^0.8.0",
+    "load-grunt-tasks": "*"
+  },
+  "dependencies": {
+    "highlight.js": "~7.5.0"
+  },
+  "private": "true",
+  "keywords": [
+    "simple-server"
+  ]
+}
