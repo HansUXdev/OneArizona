@@ -3,6 +3,51 @@
    For the mobile first stylesheet which applies to all screen widths, see theme.scss.
    =================================================================================== */
 
+
+// Bootstrap Media Queiry Mixins
+@mixin boot($class) {
+  @if $class == xs {
+    @media (max-width: 767px) { @content; }
+  }
+ 
+  @else if $class == sm {
+    @media (min-width: 768px) { @content; }
+  }
+ 
+  @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  }
+ 
+  @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+ 
+}
+
+// Foundation Media Queiry Mixins
+  @mixin bp($point) {
+    
+    $bp-small: "(max-width: 40em)";
+    $bp-medium: "(min-width: 40.063em)";
+    $bp-small-medium: "(min-width: 40.063em) and (max-width: 64em)";
+    $bp-large: "(min-width: 64.063em)";
+
+    @if $point == lg {
+      @media #{$bp-large} { @content; }
+    }
+    @else if $point == md {
+      @media #{$bp-medium} { @content; }
+    }
+    @else if $point == sm-md {
+      @media #{$bp-small-medium} { @content; }
+    }
+    @else if $point == sm {
+      @media #{$bp-small}  { @content; }
+    }
+
+  }
+
+
 //* style variables *//
 
 // headline font
@@ -434,8 +479,9 @@ nav {
   vertical-align: middle;
   text-align: right;
   & > li {
-    padding: .25em 1em;
-    @include border-radius($control-radius);
+    padding: .25em 2em;
+    // @include border-radius($control-radius);
+    border-radius: 50px;
     i {
       margin-right: -.4em;
       margin-left: .2em;

@@ -1,4 +1,23 @@
 ////////////////////////////////////////////
+//    Offcanvas
+///////////////////////////////////////////
+  // Carla Doesn't like this effect... 
+
+  // When Offcanvas is revealed, make the content fix.
+      
+  // body.aware-theme .pattern#pattern{
+  //   // Apply only when offcanvas is active, otherwise you messed up...
+  //   .wrap.active{
+  //     width: 38.5em;
+  //     -webkit-transition: width 1s ease-in-out;
+  //     -moz-transition: width 1s ease-in-out;
+  //     -o-transition: width 1s ease-in-out;
+  //     transition: width 1s ease-in-out;
+  //   }
+  // }
+      //width: 35em;
+
+////////////////////////////////////////////
 //    Simple Page Specific Changes
 ///////////////////////////////////////////
   #body.page-user-sessions-new-wide .center{

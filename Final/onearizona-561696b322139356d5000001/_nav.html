@@ -1,19 +1,6 @@
 
         <nav id="menu" role="navigation">
-            <ul class="social-media-links">
-                <div class="social-share">
-                  <div class="col-xs-6">
-                    <a href="https://twitter.com/onearizona" class="twitter-share">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </div>
-                  <div class="col-xs-6">
-                    <a href="https://www.facebook.com/OneArizona" class="facebook-share">
-                      <i class="fa fa-facebook"></i>
-                    </a>
-                  </div>
-                </div>
-            </ul>
+
           <ul id="topnav" class="topnav desktop-nav">
             {% for child in site.root_nav_pages %}
               {% if child.leaf? or child.nav_children.size == 0 %}
@@ -37,6 +24,20 @@
               {% endif %}
             {% endfor %}
           </ul>
+          <ul class="social-media-links">
+              <div class="social-share">
+                <div class="col-xs-6">
+                  <a href="https://twitter.com/onearizona" class="twitter-share">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </div>
+                <div class="col-xs-6">
+                  <a href="https://www.facebook.com/OneArizona" class="facebook-share">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </div>
+              </div>
+          </ul>          
           {% if request.logged_in? %}
           {% comment %}
           <div class="user-menu active">

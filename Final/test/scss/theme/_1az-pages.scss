@@ -1,0 +1,78 @@
+////////////////////////////////////////////
+//    Simple Page Specific Changes
+///////////////////////////////////////////
+  #body.page-user-sessions-new-wide .center{
+    > hr{
+      display: none;
+    }
+  }
+  hr{
+  	border: none !important;
+  }
+  // Calendar
+	.page-type-calendar.page-calendar{
+		.event-info > .pc.event-count{color: #fff !important;}
+	}
+
+/////////////////////////
+// Voting Center Page 
+/////////////////////////
+.page-voter_center{
+
+  .sidebar{
+    background-color: #eee;
+    // height: 30%;
+    @include boot(md) {
+      height: 118em;
+    }
+    input#signup_email{
+      border-color: #0e2445;
+      outline: 0;
+      outline: thin dotted \9;
+      -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.075),0 0 2px #0e2445;
+      -moz-box-shadow: inset 0 0 1px rgba(0,0,0,0.075),0 0 2px #0e2445;
+      box-shadow: inset 0 0 1px rgba(0,0,0,0.075),0 0 2px #0e2445;
+    }
+    .btn.btn-ghost.btn-accent{
+      margin: 1em 0em 1em 0em;
+      // padding: 1em 5.5em 1em 5.5em !important;
+      width: 100%;
+      background-color: #0E2445;
+      // border: 1px solid black;
+      color: #fff;
+
+      // On Hover
+      &:hover{
+        background-color: transparent;
+        border: 1px solid blue;
+        color: #000;
+      }
+      &.btn-large{
+        @include bp(sm) {
+          width: 100%;
+        }
+        @include bp(sm-md) {
+          width: 100%;
+        }
+      }
+    }
+  }
+  // end sidebar
+  .voter-main-content{
+    .headline{
+      padding-top: 0.5em;
+      text-align: center;
+      font-size: 6.5rem;
+    }
+    .like-page{
+      display: none;
+    }
+  }
+  // end main-content
+}
+
+
+
+////////////////////////////////////////////
+//  END  Simple Page Specific Changes
+///////////////////////////////////////////

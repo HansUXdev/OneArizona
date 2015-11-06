@@ -10,27 +10,11 @@ gulp.task('clean', function(done) {
   rimraf('./_build', done);
 });
 
-///
-/// We use this task to generate the settings file
-///
-gulp.task('sass:settings', function() {
-  octophant([
-    // 'test/scss/_variables.scss',
-    'test/scss/_button.scss',
-    'test/scss/*.scss'
-  ], {
-    title: 'One Arizona Settings'.toUpperCase(),
-    /// Path to source files containing 
-    partialsPath: 'test/docs/', // This will folder contains html files with the scss variables (which seems kinda pointless...)
-    /// Path to where the _settings.scss file will be stored
-    settingsPath: 'test/scss'
-  });
-});
 
 
 // Compile Sass into CSS
 gulp.task('sass', function() {
-  return gulp.src('./test/scss/style.scss')
+  return gulp.src('./test/scss/testimonial-slider.scss')
     .pipe($.sass({
       errLogToConsole: true
     }))
@@ -43,21 +27,41 @@ gulp.task('sass', function() {
 // Combine JavaScript into one file
 gulp.task('javascript', function() {
   return gulp.src([
-    // '../node_modules/jquery/dist/jquery.js',
-    // '../js/foundation.core.js',
-    // '../js/foundation.util.*.js',
-    // '../node_modules/motion-ui/motion-ui.js',
+
     // Third Party
     'test/js/jquery-2.1.1.js',
-    'test/js/masonry.pkgd.min.js',
+
+    /// THEME JS
+    'test/theme/jquery.ui.effect.min.js',
+    'test/theme/jquery.ui.effect-slide.min.js',
+    'test/theme/staged-donations.js',
+    'test/theme/collective.js',
+
+    // For the Slider
+    //'test/js/masonry.pkgd.min.js',
     'test/js/jquery.flexslider-min.js',
+
+    // Text Effect
+    'test/theme/typed.js',
+    'test/theme/typewriter.js',
+
+    // 'jquery.fittext.js'
+    // 'jquery.lettering.js'
+    // 'jquery.textillate.js'
+
+    // For graph
+      // 'test/theme/raphael.js',
+      // 'test/theme/morris.min.js',
+
+
+
     // Main
     'test/js/main.js',
     // 'js/*.js'
     // 'js/**/*.js'
   ])
     .pipe($.concat('app.js'))
-    .pipe(gulp.dest('test/js/'));
+    .pipe(gulp.dest('onearizona-561696b322139356d5000001'/*'test/js/'*/));
 });
 
 

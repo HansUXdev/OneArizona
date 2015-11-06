@@ -18,9 +18,10 @@ $testimonial-color-4: #ffffff; // white
 $testimonial-primary-font: 'Helvetica Neue', sans-serif;
 $testimonial-secondary-font: 'Georgia', serif;
 
+$testimonial-font-size-md: 15px;	// 22px
+$testimonial-font-size-lg: 20px;	// 26px
 
-  $testimonial-slider-height: 500px;
-  $testimonial-slider-xs: $testimonial-slider-height + 200px !important;
+
 
 
 /// Image Size
@@ -35,7 +36,9 @@ $testimonial-secondary-font: 'Georgia', serif;
 
 @import 'mixins'; 
 
-@import 'layout'; /
+@import 'layout'; 
+
+@import 'theme/theme'; 
 
 
 
@@ -134,13 +137,13 @@ img {
 
 	@include MQ(M) {
 		p {
-			@include font-size(22px);
+			@include font-size($testimonial-font-size-md);
 		}
 	}
 
 	@include MQ(L) {
 		p {
-			@include font-size(26px);
+			@include font-size($testimonial-font-size-lg);
 			line-height: 1.6;
 		}
 	}

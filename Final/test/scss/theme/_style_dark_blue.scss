@@ -1,0 +1,90 @@
+//* style variables *//
+
+// headline font
+$headline-font: "Exo 2", Helvetica, sans-serif;
+
+// main font
+$font: "Open Sans", Helvetica, sans-serif;
+
+$theme-color-1: #6a9cc5; // accent / logo background color
+$theme-color-2: #303640; // body background
+$theme-color-3: #1c2026; // off-canvas control color
+$theme-color-4: lighten($theme-color-3,5); // off-canvas border color
+
+// form input area focus color
+$theme-color-5: rgba(106, 156, 167, 0.6);
+
+// header and footer
+$header-background-color: darken(#303640, 5);
+$header-background-color-2: #6a9cc5;
+$header-color: #fff;
+$background-texture: none;
+$header-texture: none;
+$logo-color: #fff;
+$off-canvas-background-color: #1c2026;
+$features-text-color: #2f2f2f;
+$features-background-color: rgba(255,255,255,.89);
+$footer-background-color: #dddddd;
+$footer-color: #303640;
+$footer-link-color: $theme-color-1;
+$footer-activities-background-color: #6a9cc5;
+
+// dropdowns
+$dropdown-background-color: #86bfee;
+$dropdown-background-hover-color: #6a9cc5;
+$dropdown-background-active-color: #5f8bb0;
+$dropdown-color: #fff;
+$dropdown-hover-color: #fff;
+$dropdown-active-color: #fff;
+$dropdown-accent-color: #fff;
+
+// subnav colors
+$subnav-background: #6a9cc5;
+$subnav-hover-background: #86bfee;
+$subnav-active-background: #5f8bb0;
+$subnav-color: #fff;
+$subnav-hover-color: #fff;
+$subnav-active-color: #fff;
+
+// text
+$text-color: #fff;
+$link-color: #86bfee;
+$link-hover-color: #cecece;
+$link-active-color: #ffffff;
+
+// buttons
+$button-color: #fff;
+$button-background: $theme-color-1;
+$button-hover-color: #fff;
+$button-hover-background: #86bfee;
+$button-active-color: #fff;
+$button-active-background: #6f6f6f;
+$button-border: .4em solid #fff;
+$button-padding: 1.6em;
+$button-radius: 0;
+
+// site nav controls
+$control-color: #fff;
+$control-background: #6a9cc5;
+$control-hover-color: #fff;
+$control-hover-background: #86bfee;
+$control-active-color: #fff;
+$control-active-background: #6f6f6f;
+$control-radius: 0;
+
+// forms
+$form-color: #616161;
+$form-background: #f0f0f0;
+
+// shades
+$shade-1: #6a9cc5; // mid gray
+$shade-2: #ddd; // dark gray
+$shade-3: #6a9cc5; // light accent
+$shade-3-text-color: #fff;
+$shade-3-link-color: #303640;
+
+// general success and error colors
+$red: #eb1515;
+$yellow: #ffab34;
+$green: #9ac760;
+$alt: #6a9cc5; // alternative accent
