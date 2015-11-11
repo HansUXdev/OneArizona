@@ -56,9 +56,24 @@ $(document).ready(function(){
       });
     }
 
-    this.validateEmail = function(email) { 
+    this.validateEmail = function(email) {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
+    }
+
+    this.validateRequiredFields = function() {
+      var valid = true;
+      var requiredFields = $('.donation_form [required]:visible');
+      requiredFields.each(function(index, input) {
+        var $input = $(input);
+        if(!$input.val() || ($input.is(':checkbox') && !$input.is(':checked'))) {
+          var missingField = $input.attr('placeholder') || 'Field';
+          $input.addClass('error');
+          this.triggerAlert(missingField + " can't be blank", $input);
+          valid = false;
+        }
+      }.bind(this));
+      return valid;
     }
 
     this.validateDonations = function(currentStage) {
@@ -66,7 +81,7 @@ $(document).ready(function(){
       switch (currentStage) {
 
         case "1":
-          if ((donationAmount < 0.01) && ($('.progress-stage input[type="radio"]:checked').length == 0) || !$('#donation_amount_other').val()) {
+          if ((donationAmount < 0.01) && ($('.progress-stage input[type="radio"]:checked').length == 0)) {
             $('#donation_amount_other').addClass('error');
             this.triggerAlert("Invalid donation amount",$('#donation_amount_other'));
             return false;
@@ -102,39 +117,8 @@ $(document).ready(function(){
             this.triggerAlert("Email address not valid",$('#donation_email'));
             return false;
           }
-          if ($('#donation_employer').length) {
-            if (!$('#donation_employer').val()) {
-              $('#donation_employer').addClass('error');
-              this.triggerAlert("Employer can't be blank",$('#donation_employer'));
-              return false;
-            }
-            if (!$('#donation_occupation').val()) {
-              $('#donation_occupation').addClass('error');
-              this.triggerAlert("Occupation can't be blank",$('#donation_occupation'));
-              return false;
-            }
-          }
-          if ($('#donation_work_address_address1').length) {
-            if (!$('#donation_work_address_address1').val()) {
-              $('#donation_work_address_address1').addClass('error');
-              this.triggerAlert("Employer address can't be blank",$('#donation_work_address_address1'));
-              return false;
-             }
-          }
-          if ($('#donation_work_address_city').length) {
-            if (!$('#donation_work_address_city').val()) {
-              $('#donation_work_address_city').addClass('error');
-              this.triggerAlert("Employer city can't be blank",$('#donation_work_address_city'));
-              return false;
-             }
-            if (!$('#donation_work_address_state').val()) {
-              $('#donation_work_address_state').addClass('error');
-              this.triggerAlert("Employer state can't be blank",$('#donation_work_address_state'));
-              return false;
-             } else { return true; }
-          }
           else {
-            return true;
+            return this.validateRequiredFields();
           }
           break;
 

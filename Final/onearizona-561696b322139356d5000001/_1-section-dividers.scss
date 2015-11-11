@@ -138,16 +138,16 @@ $color:#3498db;
 		}
 		.section-1{@include triangle-divider(#2980b9); }
 	}
-	.section-container.latino_electorate{ 
-		@include boot(sm) {
-			padding: 5em 0 0 0;
+	// .section-container.latino_electorate{ 
+	// 	@include boot(sm) {
+	// 		padding: 5em 0 0 0;
 
-		}
-		@include boot(md) {
-			padding: 5em 0 0 0;
+	// 	}
+	// 	@include boot(md) {
+	// 		padding: 5em 0 0 0;
 
-		}
-	}
+	// 	}
+	// }
 	.section-container{
 		overflow: hidden;
 		svg {

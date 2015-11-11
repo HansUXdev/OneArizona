@@ -67,11 +67,7 @@
 
 
     {% case page.slug %}
-      {% when 'latino_electorate' %}
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 
       {% else %} 
         {% if page.is_homepage? == true %}
@@ -100,10 +96,7 @@
       <!-- 
         The mobile nav menu breaks on this page due to a conflict with the scripts....
       -->
-      {% when 'latino_electorate' %}
-        <a href="/">
-          <img src="{{ site.meta_image_url }}" class="fall-back-menu">
-        </a>
+
 
 
       {% else %} 
@@ -157,6 +150,9 @@
             {% include "1-testimonial-half" %}
           {% endcomment %}
             {% include "1-intro" %}
+            {% include "1-stories" %}
+            
+
             {% include "1az-organizations" %}
 
 
@@ -335,15 +331,15 @@
                  <div class="row twitter-row" >
                   <h2 class="text-center">Follow Us on Twitter</h2>
                   {% comment %}
-                   <div class="col-sm-6 col-md-6 left-feed">
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4"></div>
+                  {% endcomment %}
+                   <div class="col-sm-6 col-md-6 left-feed" style="padding: 5em;">
                      {% include "1twitter-hashtag" %}
                    </div>
-                  {% endcomment %}
-                    <div class="col-sm-4 col-md-4"></div>
-                    <div class="col-sm-4 col-md-4 right-feed">
+                    <div class="col-sm-6 col-md-6 right-feed" style="padding: 5em;">
                       {% include "1twitter-feed" %}
                     </div>
-                    <div class="col-sm-4 col-md-4"></div>
                  </div>
            </div>
 
@@ -459,6 +455,7 @@
                     <div class="footer-text">{{ site.footer_content }}</div>
                     <hr/>
                   {% endif %}
+                {% comment %}
                 <h1 class="text-center">
                   Share
                 </h1>
@@ -470,6 +467,7 @@
                     <i class="fa fa-facebook"></i>
                   </a>
                 </div>
+                {% endcomment %} 
               <!--  -->
                 
 
@@ -487,9 +485,10 @@
                 <div class="col-xs-6 footer-left">
                   <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
                   You can style it or move it in different ways, but please leave it in the footer. -->
+                  <!-- Created by -->
                   <div class="copyright">
                     <p>&copy;Created with <a href="http://nationbuilder.com/" class="white-fill">NationBuilder</a></p>
-                    Crafted with <span class="fa fa-heart pulse2"></span> by Hans McMurdy with <a href="http://www.ycmmarketing.com/" class="white-fill"> YCM Marketing</a>
+                    Crafted with <span class="fa fa-heart pulse2"></span> by <a href="http://www.ycmmarketing.com/portfolio-item/one-arizona-table/" class="white-fill"> YCM Marketing</a>
                   </div>
                 </div>                
                 
