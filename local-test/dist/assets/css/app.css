@@ -1,0 +1,168 @@
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border: 0;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.foundation-mq {
+  font-family: "small=0em&medium=32em&large=64em&xlarge=75em&xxlarge=90em";
+}
+
+html,
+body {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #0a0a0a;
+  background: #fefefe;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.row {
+  max-width: 75rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row .row {
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem;
+}
+
+.columns {
+  -webkit-flex: 1 1 0px;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0px;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+}
+
+.small-12 {
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 64em) {
+  .large-expand {
+    -webkit-flex: 1 1 0px;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0px;
+  }
+}
+
+.row.align-middle {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.media-object-section:last-child:not(+&:first-child) {
+  padding-left: 1rem;
+}
+
+.personal-stories .story-container {
+  padding: 2em;
+}
+
+@media screen and (max-width: 63.9375em) {
+  .personal-stories .story-container {
+    margin: 2em;
+  }
+}
+
+.personal-stories .story {
+  padding-top: 0.1em;
+}
+
+.personal-stories .story .avatar img {
+  padding: 0.1em;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.personal-stories .story .testimony {
+  color: #5E656A;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  font: 16px " Rockwell",Helvetica,sans-serif;
+  padding-top: 1em;
+}
+
+.personal-stories .story .author {
+  color: #acb1b4;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 1em;
+}
+
+@media screen and (max-width: 63.9375em) {
+  .personal-stories .story .small-bottom {
+    -webkit-order: 3 !important;
+    -ms-flex-order: 3 !important;
+    order: 3 !important;
+  }
+}
+
+@media screen and (max-width: 63.9375em) {
+  .personal-stories .story .small-top {
+    -webkit-order: 1 !important;
+    -ms-flex-order: 1 !important;
+    order: 1 !important;
+  }
+}
