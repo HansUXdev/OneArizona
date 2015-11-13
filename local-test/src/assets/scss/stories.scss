@@ -1,0 +1,67 @@
+.personal-stories{
+  .story-container{
+    padding: 2em;
+    // apply on medium
+    @include breakpoint(medium down) {
+      margin: 2em; // this should give help create a white box
+    }
+  }
+  .story{
+    //background-color:#000 ;
+    padding-top: 0.1em;
+    // Global Styles
+    .avatar img{
+      padding: 0.1em;
+      max-width: 100%;
+      height: auto;
+      -ms-interpolation-mode: bicubic;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .testimony{
+      color: #5E656A;
+      //font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      text-align: center;
+      font: 16px " Rockwell",Helvetica,sans-serif;
+      padding-top: 1em;
+    }
+    .author{
+      color: #acb1b4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      text-align: center;
+      margin: 1em;
+    }
+    // Specific Style
+    .voting-story{}
+    .immigration-story{}
+    .education-story{}
+    .economic-story{} 
+
+    
+      .small-bottom{
+        @include breakpoint(medium down) {
+          -webkit-order: 3 !important;
+          -ms-flex-order: 3 !important;
+          order: 3 !important; 
+        }
+      }
+      .small-top{
+        @include breakpoint(medium down) {
+          -webkit-order: 1 !important;
+          -ms-flex-order: 1 !important;
+          order: 1 !important; 
+        }
+      }
+
+    
+
+  }
+}
+
+.border{
+      border: 5px solid #000;
+}

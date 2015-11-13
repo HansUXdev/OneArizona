@@ -1,0 +1,54 @@
+    <div class="top-bar dark">
+      <div class="column row">
+        <div class="top-bar-left">
+          <ul class="menu">
+            {{#each nav}}
+            <li><a href="#">{{this}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="top-bar-right social-media-nav">
+          <ul class="menu">
+            {{#each social}}
+            <li><a href="#"><i class="fi-social-{{this}}"></i></a></li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<div class="this">
+  <div id="x-menu" class="light">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+</div>
+
+  <div id="menu-overlay">
+    <div class="row">
+      <div class="large-4 columns">
+
+      </div>
+      <div class="large-4 columns">
+        <ul id="menu" class="menu-items">
+          {{#each nav}}
+            <li><a href="/">{{this}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="large-4 columns">
+        <ul id="menu" class="menu-items">
+            {{#each social}}
+            <li><a href="#"><i class="fi-social-{{this}}"></i></a></li>
+            {{/each}}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  

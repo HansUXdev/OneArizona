@@ -1,0 +1,48 @@
+         <div class="graph-container">
+            <h2 class="caption text-center">Arizona Potential at the Ballot Box !</h2>
+            <p>Number of Hispanics eligible to vote (adult U.S. citizens), in millions.</p>
+            <div id="arizonaEligibleLatinoVoters" class="graph" style="background-color: #fff;"></div>
+            <p class="text-center">Source: Analysis of census data by the Pew Research Center.</p>
+         </div>
+
+
+
+        <script>
+          $(document).ready(function() {
+            $(function () {
+                /*////////////////////
+                  This Data is based of #1 but I can't find the exact data they "referenced" from pew...
+
+                  // FACT CHECK THESE NUMBERS !!!
+
+                  1). http://www.nytimes.com/2015/09/14/opinion/latinos-for-donald-trump.html?smid=fb-share&_r=1
+                  
+                  // Other related data for consideration
+                  2). http://www.pewhispanic.org/fact-sheets/2014-state-election-fact-sheets/latinos-in-the-2014-election-arizona/
+
+                  3). http://www.pewhispanic.org/files/2012/11/hispanic_vote_likely_to_double_by_2030_11-14-12.pdf
+
+                ///////////////////*/
+                new Morris.Line({
+                element: 'arizonaEligibleLatinoVoters',
+                xkey: 'year',
+                ykeys: ['value'],
+                labels: [''],
+                resize: true,
+                // Convert Value to Million
+                yLabelFormat: function (y) { return y.toString() + ' million'; },
+                data: [
+                  {year: '2004', value: 0.5},
+                  {year: '2006', value: 0.6},
+                  {year: '2008', value: 0.7},
+                  {year: '2010', value: 0.8},
+                  // 2012 - http://www.pewhispanic.org/2012/10/01/mapping-the-2012-latino-electorate/
+                  {year: '2012', value: 0.824},
+                  // 2014 should be accurate - http://www.pewhispanic.org/fact-sheets/2014-state-election-fact-sheets/latinos-in-the-2014-election-arizona/
+                  {year: '2014', value: 0.902}, 
+                  {year: '2016', value: 1.2}
+                ]
+                });
+            });
+          }); 
+        </script>

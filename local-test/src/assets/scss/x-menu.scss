@@ -1,0 +1,157 @@
+///
+/// X-Menu Settings
+///
+  // The parent selector of
+  $x-menu:'#x-menu'; //#nav-icon
+  //
+  $x-menu-parent: 'this';
+  $menu-open:'open';
+  $menu-width: 2em;
+  // Change from left to right
+  $menu-direction: 'right';
+
+  // Change this with all, height and width 
+  $menu-icon-transition: 'all';
+  $menu-icon-transition-timing: 'ease-in-out';
+
+  $menu-icon: 'span';
+  $menu-child1:':nth-child(1)';
+  $menu-child2:':nth-child(2)';
+  $menu-child3:':nth-child(3)';
+  $menu-child4:':nth-child(4)';
+
+/// @Settings.foundation
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+	visibility: visible;
+}
+
+#menu-overlay{
+  opacity: 0;
+  background: #111;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  
+  // This is where the magic happens
+  width: 40%;
+  height: 20%;
+  
+  overflow: hidden;
+  transition: #{$menu-icon-transition} .6s;
+  transition-timing-function: #{$menu-icon-transition-timing};
+  
+  &.menu-show{
+    // This is where the magic happens
+    visibility: visible;
+    z-index: 1000;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    transition: #{$menu-icon-transition} .6s;
+  }
+
+  .menu-items{
+    list-style: none;
+    text-align: center;
+    line-height: 400%;
+    li a{
+      color: #fff;
+      &:hover, &:focus{
+        color: blue;
+        padding: 1em;
+        border: 1px solid blue;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+
+
+#{$x-menu}{
+  &:after{
+    color: #000;
+    content: 'Menu';
+    position: relative;
+    #{$menu-direction}: 3em;
+  }
+  position: fixed;
+  top: 35px;
+  #{$menu-direction}: 35px;
+  z-index: 88888;
+  display: block;
+  width: $menu-width; // 45px
+  height: 28px;
+  margin: 0;
+  transform: rotate(0deg);     
+  // prefixed with webkit, moz and o
+  transition: .5s ease-in-out; 
+  // prefixed with webkit, moz and o
+  cursor: pointer;
+  
+  #{$menu-icon}{
+    background-color: #2fa68e !important;
+
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #111;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+
+    transform: rotate(0deg); 
+    // prefix with webkit, moz and o
+    transition: .25s ease-in-out;
+    // prefix with webkit, moz and o
+  }
+  
+  
+  #{$menu-icon}#{$menu-child1}{
+    top: 0px;
+  }
+  #{$menu-icon}#{$menu-child2},
+  #{$menu-icon}#{$menu-child3}{
+    top: 12px;
+  }
+  #{$menu-icon}#{$menu-child4}{
+    top: 24px;
+  }
+}
+
+
+//
+///  MENU OPEN
+//
+#{$x-menu}.#{$menu-open}{
+  &:after{
+    color: #fff;
+    content: 'Close';
+  }
+  #{$menu-icon}#{$menu-child1}{
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+
+  #{$menu-icon}#{$menu-child2}{
+    transform: rotate(45deg); ;  
+    // prefix with webkit, moz and o
+  }
+  #{$menu-icon}#{$menu-child3}{
+    transform: rotate(-45deg); 
+    // prefix with webkit, moz and o
+  }
+  
+  #{$menu-icon}#{$menu-child4}{
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+}
